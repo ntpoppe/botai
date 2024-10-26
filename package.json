@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "node -r module-alias/register src/main.js",
+    "deploy-commands": "node -r module-alias/register src/deploy-commands.js",
     "run-script": "node -r module-alias/register src/utils/refresh-dynamic-data.js"
   }
 }

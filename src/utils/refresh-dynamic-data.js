@@ -38,7 +38,7 @@ const endpoints = [
             locale: 'en_US'
         },
         savePath: path.join(__dirname, '../../data/auction_house_data.json')
-    }
+    },
 ];
 
 const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
