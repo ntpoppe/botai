@@ -1,10 +1,10 @@
 const BlizzardAPI = require('@api/blizzard-api.js');
-const PrcoessEndpoints = require('@api/process-endpoints');
+const ProcessEndpoints = require('@api/process-endpoints');
 const config  = require('@src/config');
 const path = require('path');
 
 async function saveData() {
-    await saveApiData.fetchAll(true);
+    await processEndpoints.fetchAll(true);
     //await saveApiData.processSavedData('playerProfile', ['equipped_items']);
 }
 
