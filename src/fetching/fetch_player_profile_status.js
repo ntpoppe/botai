@@ -1,7 +1,6 @@
 const fs = require('fs');
 const fetch = require('node-fetch'); 
 
-const mankrikId = 4384
 const clientId = '307c0637ae55477c89c5e6688ff59881';
 const clientSecret = 'W9pD451ogJ6Qg7bKBxynm77Rw2JHS3lD';
 
@@ -22,31 +21,32 @@ async function getAccessToken() {
     return data.access_token;
 }
 
-async function getAuctionIndex() {
+async function getPlayerStatus(slug, characterName) {
     const accessToken = await getAccessToken();
-    const apiRealmsUrl = `https://us.api.blizzard.com/data/wow/connected-realm/${mankrikId}/auctions/index?namespace=dynamic-classic-us`
+    const apiUrl = `https://us.api.blizzard.com/profile/wow/character/${slug}/${characterName}/status?namespace=profile-classic-us&locale=en_US`;
 
-    const response = await fetch(apiRealmsUrl, {
+    const response = await fetch(apiUrl, {
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Battlenet-Namespace': 'dynamic-us'
         }
     });
 
     if (!response.ok) {
-        console.error('Error fetching auction house data:', response.statusText);
+        console.error('Error fetching player profile data:', response.statusText);
         return;
     }
 
     const auctionData = await response.json();
 
-    fs.writeFile('../data/auction_index_data.json', JSON.stringify(auctionData, null, 2), (err) => {
+    fs.writeFile('../../data/player_status_data.json', JSON.stringify(auctionData, null, 2), (err) => {
         if (err) {
             console.error('Error writing JSON file:', err);
         } else {
-            console.log('Auction data saved to auction_index_data.json');
+            console.log('Auction data saved to player_profile_data.json');
         }
     });
 }
 
-getAuctionIndex();
+slug = 'mankrik'
+characterName = 'retei'
+getPlayerStatus(slug, characterName);

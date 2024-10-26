@@ -1,6 +1,7 @@
 const fs = require('fs');
 const fetch = require('node-fetch'); 
 
+const mankrikId = 4384
 const clientId = '307c0637ae55477c89c5e6688ff59881';
 const clientSecret = 'W9pD451ogJ6Qg7bKBxynm77Rw2JHS3lD';
 
@@ -21,11 +22,11 @@ async function getAccessToken() {
     return data.access_token;
 }
 
-async function getRealmData() {
+async function getAuctionIndex() {
     const accessToken = await getAccessToken();
-    const apiRealmsUrl = `https://us.api.blizzard.com/data/wow/search/connected-realm?namespace=dynamic-classic-us`
+    const apiUrl = `https://us.api.blizzard.com/data/wow/connected-realm/${mankrikId}/auctions/index?namespace=dynamic-classic-us`
 
-    const response = await fetch(apiRealmsUrl, {
+    const response = await fetch(apiUrl, {
         headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Battlenet-Namespace': 'dynamic-us'
@@ -39,13 +40,13 @@ async function getRealmData() {
 
     const auctionData = await response.json();
 
-    fs.writeFile('../data/cata_realm_data.json', JSON.stringify(auctionData, null, 2), (err) => {
+    fs.writeFile('../data/auction_index_data.json', JSON.stringify(auctionData, null, 2), (err) => {
         if (err) {
             console.error('Error writing JSON file:', err);
         } else {
-            console.log('Auction data saved to cata_realm_data.json');
+            console.log('Auction data saved to auction_index_data.json');
         }
     });
 }
 
-getRealmData();
+getAuctionIndex();

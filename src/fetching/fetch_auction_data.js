@@ -28,9 +28,9 @@ async function getAccessToken() {
 
 async function getAuctionData(houseId) {
     const accessToken = await getAccessToken();
-    const apiRealmsUrl = `https://us.api.blizzard.com/data/wow/connected-realm/${mankrikId}/auctions/${houseId}?namespace=dynamic-classic-us`
+    const apiUrl = `https://us.api.blizzard.com/data/wow/connected-realm/${mankrikId}/auctions/${houseId}?namespace=dynamic-classic-us`
 
-    const response = await fetch(apiRealmsUrl, {
+    const response = await fetch(apiUrl, {
         headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Battlenet-Namespace': 'dynamic-us'
