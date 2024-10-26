@@ -1,9 +1,13 @@
 const fs = require('fs');
 const fetch = require('node-fetch'); 
 
-const mankrikId = 4384
+const mankrikId = 4384;
 const clientId = '307c0637ae55477c89c5e6688ff59881';
 const clientSecret = 'W9pD451ogJ6Qg7bKBxynm77Rw2JHS3lD';
+
+const allianceHouseId = 2;
+const hordeHouseId = 6;
+const blackwaterHouseId = 7;
 
 async function getAccessToken() {
     const authUrl = 'https://oauth.battle.net/token';
@@ -22,9 +26,9 @@ async function getAccessToken() {
     return data.access_token;
 }
 
-async function getAuctionIndex() {
+async function getAuctionData(houseId) {
     const accessToken = await getAccessToken();
-    const apiRealmsUrl = `https://us.api.blizzard.com/data/wow/connected-realm/${mankrikId}/auctions/index?namespace=dynamic-classic-us`
+    const apiRealmsUrl = `https://us.api.blizzard.com/data/wow/connected-realm/${mankrikId}/auctions/${houseId}?namespace=dynamic-classic-us`
 
     const response = await fetch(apiRealmsUrl, {
         headers: {
@@ -40,13 +44,13 @@ async function getAuctionIndex() {
 
     const auctionData = await response.json();
 
-    fs.writeFile('../data/auction_index_data.json', JSON.stringify(auctionData, null, 2), (err) => {
+    fs.writeFile('../data/auction_data.json', JSON.stringify(auctionData, null, 2), (err) => {
         if (err) {
             console.error('Error writing JSON file:', err);
         } else {
-            console.log('Auction data saved to auction_index_data.json');
+            console.log('Auction data saved to auction_data.json');
         }
     });
 }
 
-getAuctionIndex();
+getAuctionData(hordeHouseId);
