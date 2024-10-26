@@ -2,12 +2,11 @@ const fs = require('fs');
 const fetch = require('node-fetch'); 
 
 const mankrikId = 4384
-const clientId = '307c0637ae55477c89c5e6688ff59881';
-const clientSecret = 'W9pD451ogJ6Qg7bKBxynm77Rw2JHS3lD';
+const config = JSON.parse(fs.readFileSync('../../config.json', 'utf8'));
 
 async function getAccessToken() {
     const authUrl = 'https://oauth.battle.net/token';
-    const credentials = btoa(`${clientId}:${clientSecret}`);
+    const credentials = btoa(`${config.clientId}:${config.clientSecret}`);
 
     const response = await fetch(authUrl, {
         method: 'POST',
@@ -40,11 +39,11 @@ async function getAuctionIndex() {
 
     const auctionData = await response.json();
 
-    fs.writeFile('../data/auction_index_data.json', JSON.stringify(auctionData, null, 2), (err) => {
+    fs.writeFile('../../data/auction_index_data.json', JSON.stringify(auctionData, null, 2), (err) => {
         if (err) {
             console.error('Error writing JSON file:', err);
         } else {
-            console.log('Auction data saved to auction_index_data.json');
+            console.log('Auction index saved to auction_index_data.json');
         }
     });
 }

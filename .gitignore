@@ -1,5 +1,7 @@
 # Custom
+.eslintrc.json
 data/
+config.json
 
 # Node.js
 node_modules/

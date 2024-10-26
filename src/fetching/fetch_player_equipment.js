@@ -1,12 +1,7 @@
 const fs = require('fs');
 const fetch = require('node-fetch'); 
 
-const mankrikId = 4384;
 const config = JSON.parse(fs.readFileSync('../../config.json', 'utf8'));
-
-const allianceHouseId = 2;
-const hordeHouseId = 6;
-const blackwaterHouseId = 7;
 
 async function getAccessToken() {
     const authUrl = 'https://oauth.battle.net/token';
@@ -25,31 +20,32 @@ async function getAccessToken() {
     return data.access_token;
 }
 
-async function getAuctionData(houseId) {
+async function getPlayerEquipment(slug, characterName) {
     const accessToken = await getAccessToken();
-    const apiUrl = `https://us.api.blizzard.com/data/wow/connected-realm/${mankrikId}/auctions/${houseId}?namespace=dynamic-classic-us`
-
+    const apiUrl = `https://us.api.blizzard.com/profile/wow/character/${slug}/${characterName}/equipment?namespace=profile-classic-us`;
+//
     const response = await fetch(apiUrl, {
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Battlenet-Namespace': 'dynamic-us'
         }
     });
 
     if (!response.ok) {
-        console.error('Error fetching auction house data:', response.statusText);
+        console.error('Error fetching player equipment data:', response.statusText);
         return;
     }
 
     const auctionData = await response.json();
 
-    fs.writeFile('../../data/auction_data.json', JSON.stringify(auctionData, null, 2), (err) => {
+    fs.writeFile('../../data/player_equipment_data.json', JSON.stringify(auctionData, null, 2), (err) => {
         if (err) {
             console.error('Error writing JSON file:', err);
         } else {
-            console.log('Auction data saved to auction_data.json');
+            console.log('Equipment data saved to player_equipment_data.json');
         }
     });
 }
 
-getAuctionData(hordeHouseId);
+slug = 'mankrik'
+characterName = 'retei'
+getPlayerEquipment(slug, characterName);
