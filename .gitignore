@@ -1,0 +1,37 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Operating System files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Temporary files and backups
+*.tmp
+*.swp
+*.bak
+*.orig
+*.idea/
+
+# Environment files (do not commit secrets)
+.env
+.env.local
+
+# Build directories (depending on your project setup)
+dist/
+build/
+out/
+
+# Git metadata
+.git/
+
+# IDE/Editor files
+.vscode/
+*.sublime-project
+*.sublime-workspace

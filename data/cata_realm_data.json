@@ -1,0 +1,2630 @@
+{
+  "page": 1,
+  "pageSize": 23,
+  "maxPageSize": 100,
+  "pageCount": 1,
+  "results": [
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4647?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/Los_Angeles",
+            "name": {
+              "it_IT": "Grobbulus",
+              "ru_RU": "Grobbulus",
+              "en_GB": "Grobbulus",
+              "zh_TW": "葛羅巴斯",
+              "ko_KR": "Grobbulus",
+              "en_US": "Grobbulus",
+              "es_MX": "Grobbulus",
+              "pt_BR": "Grobbulus",
+              "es_ES": "Grobbulus",
+              "zh_CN": "格罗布鲁斯",
+              "fr_FR": "Grobbulus",
+              "de_DE": "Grobbulus"
+            },
+            "id": 4647,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Ovest)",
+              "ru_RU": "США (запад)",
+              "en_GB": "US West",
+              "zh_TW": "美西",
+              "ko_KR": "미국 서부",
+              "en_US": "US West",
+              "es_MX": "EE. UU. oeste",
+              "pt_BR": "EUA - Oeste",
+              "es_ES": "EE. UU. (Oeste)",
+              "zh_CN": "美国西部",
+              "fr_FR": "USA (Ouest)",
+              "de_DE": "USA West"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP GdR",
+                "ru_RU": "Ролевой PvP",
+                "en_GB": "PvP RP",
+                "zh_TW": "PvP角色扮演",
+                "ko_KR": "전쟁 롤플레이",
+                "en_US": "PvP RP",
+                "es_MX": "JR JcJ",
+                "pt_BR": "JxJ RP",
+                "es_ES": "JR JcJ",
+                "zh_CN": "PvP RP",
+                "fr_FR": "JdR JcJ",
+                "de_DE": "(RP-PvP)"
+              },
+              "type": "PVP_RP"
+            },
+            "slug": "grobbulus"
+          }
+        ],
+        "id": 4647,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Media",
+            "ru_RU": "средне",
+            "en_GB": "Medium",
+            "zh_TW": "中",
+            "ko_KR": "보통",
+            "en_US": "Medium",
+            "es_MX": "Medio",
+            "pt_BR": "Médio",
+            "es_ES": "Medio",
+            "zh_CN": "中",
+            "fr_FR": "Moyenne",
+            "de_DE": "Mittel"
+          },
+          "type": "MEDIUM"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4372?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/Los_Angeles",
+            "name": {
+              "it_IT": "Atiesh",
+              "ru_RU": "Atiesh",
+              "en_GB": "Atiesh",
+              "zh_TW": "阿泰絲",
+              "ko_KR": "Atiesh",
+              "en_US": "Atiesh",
+              "es_MX": "Atiesh",
+              "pt_BR": "Atiesh",
+              "es_ES": "Atiesh",
+              "zh_CN": "埃提耶什",
+              "fr_FR": "Atiesh",
+              "de_DE": "Atiesh"
+            },
+            "id": 4372,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Ovest)",
+              "ru_RU": "США (запад)",
+              "en_GB": "US West",
+              "zh_TW": "美西",
+              "ko_KR": "미국 서부",
+              "en_US": "US West",
+              "es_MX": "EE. UU. oeste",
+              "pt_BR": "EUA - Oeste",
+              "es_ES": "EE. UU. (Oeste)",
+              "zh_CN": "美国西部",
+              "fr_FR": "USA (Ouest)",
+              "de_DE": "USA West"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "atiesh"
+          }
+        ],
+        "id": 4372,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Media",
+            "ru_RU": "средне",
+            "en_GB": "Medium",
+            "zh_TW": "中",
+            "ko_KR": "보통",
+            "en_US": "Medium",
+            "es_MX": "Medio",
+            "pt_BR": "Médio",
+            "es_ES": "Medio",
+            "zh_CN": "中",
+            "fr_FR": "Moyenne",
+            "de_DE": "Mittel"
+          },
+          "type": "MEDIUM"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4387?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Ashkandi",
+              "ru_RU": "Ashkandi",
+              "en_GB": "Ashkandi",
+              "zh_TW": "阿什坎迪",
+              "ko_KR": "Ashkandi",
+              "en_US": "Ashkandi",
+              "es_MX": "Ashkandi",
+              "pt_BR": "Ashkandi",
+              "es_ES": "Ashkandi",
+              "zh_CN": "阿什坎迪",
+              "fr_FR": "Ashkandi",
+              "de_DE": "Ashkandi"
+            },
+            "id": 4387,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "ashkandi"
+          }
+        ],
+        "id": 4387,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4384?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Mankrik",
+              "ru_RU": "Mankrik",
+              "en_GB": "Mankrik",
+              "zh_TW": "曼寇里克",
+              "ko_KR": "Mankrik",
+              "en_US": "Mankrik",
+              "es_MX": "Mankrik",
+              "pt_BR": "Mankrik",
+              "es_ES": "Mankrik",
+              "zh_CN": "曼科里克",
+              "fr_FR": "Mankrik",
+              "de_DE": "Mankrik"
+            },
+            "id": 4384,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "mankrik"
+          }
+        ],
+        "id": 4384,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Alta",
+            "ru_RU": "Высокая",
+            "en_GB": "High",
+            "zh_TW": "高",
+            "ko_KR": "혼잡",
+            "en_US": "High",
+            "es_MX": "Alto",
+            "pt_BR": "Alto",
+            "es_ES": "Alto",
+            "zh_CN": "高",
+            "fr_FR": "Élevée",
+            "de_DE": "Hoch"
+          },
+          "type": "HIGH"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4388?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Westfall",
+              "ru_RU": "Westfall",
+              "en_GB": "Westfall",
+              "zh_TW": "西部荒野",
+              "ko_KR": "Westfall",
+              "en_US": "Westfall",
+              "es_MX": "Westfall",
+              "pt_BR": "Westfall",
+              "es_ES": "Westfall",
+              "zh_CN": "西部荒野",
+              "fr_FR": "Westfall",
+              "de_DE": "Westfall"
+            },
+            "id": 4388,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "westfall"
+          }
+        ],
+        "id": 4388,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4795?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/Los_Angeles",
+            "name": {
+              "it_IT": "Angerforge",
+              "ru_RU": "Angerforge",
+              "en_GB": "Angerforge",
+              "zh_TW": "安格弗",
+              "ko_KR": "Angerforge",
+              "en_US": "Angerforge",
+              "es_MX": "Angerforge",
+              "pt_BR": "Angerforge",
+              "es_ES": "Angerforge",
+              "zh_CN": "怒炉",
+              "fr_FR": "Angerforge",
+              "de_DE": "Angerforge"
+            },
+            "id": 4795,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Ovest)",
+              "ru_RU": "США (запад)",
+              "en_GB": "US West",
+              "zh_TW": "美西",
+              "ko_KR": "미국 서부",
+              "en_US": "US West",
+              "es_MX": "EE. UU. oeste",
+              "pt_BR": "EUA - Oeste",
+              "es_ES": "EE. UU. (Oeste)",
+              "zh_CN": "美国西部",
+              "fr_FR": "USA (Ouest)",
+              "de_DE": "USA West"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "angerforge"
+          }
+        ],
+        "id": 4795,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4725?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/Los_Angeles",
+            "name": {
+              "it_IT": "Skyfury",
+              "ru_RU": "Anathema",
+              "en_GB": "Skyfury",
+              "zh_TW": "天怒",
+              "ko_KR": "Skyfury",
+              "en_US": "Skyfury",
+              "es_MX": "Skyfury",
+              "pt_BR": "Skyfury",
+              "es_ES": "Skyfury",
+              "zh_CN": "天怒",
+              "fr_FR": "Skyfury",
+              "de_DE": "Skyfury"
+            },
+            "id": 4725,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Ovest)",
+              "ru_RU": "США (запад)",
+              "en_GB": "US West",
+              "zh_TW": "美西",
+              "ko_KR": "미국 서부",
+              "en_US": "US West",
+              "es_MX": "EE. UU. oeste",
+              "pt_BR": "EUA - Oeste",
+              "es_ES": "EE. UU. (Oeste)",
+              "zh_CN": "美国西部",
+              "fr_FR": "USA (Ouest)",
+              "de_DE": "USA West"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "skyfury"
+          }
+        ],
+        "id": 4725,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4373?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/Los_Angeles",
+            "name": {
+              "it_IT": "Myzrael",
+              "ru_RU": "Myzrael",
+              "en_GB": "Myzrael",
+              "zh_TW": "密斯賴爾",
+              "ko_KR": "Myzrael",
+              "en_US": "Myzrael",
+              "es_MX": "Myzrael",
+              "pt_BR": "Myzrael",
+              "es_ES": "Myzrael",
+              "zh_CN": "密斯莱尔",
+              "fr_FR": "Myzrael",
+              "de_DE": "Myzrael"
+            },
+            "id": 4373,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Ovest)",
+              "ru_RU": "США (запад)",
+              "en_GB": "US West",
+              "zh_TW": "美西",
+              "ko_KR": "미국 서부",
+              "en_US": "US West",
+              "es_MX": "EE. UU. oeste",
+              "pt_BR": "EUA - Oeste",
+              "es_ES": "EE. UU. (Oeste)",
+              "zh_CN": "美国西部",
+              "fr_FR": "USA (Ouest)",
+              "de_DE": "USA West"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "myzrael"
+          }
+        ],
+        "id": 4373,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4395?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/Los_Angeles",
+            "name": {
+              "it_IT": "Whitemane",
+              "ru_RU": "Whitemane",
+              "en_GB": "Whitemane",
+              "zh_TW": "懷特邁恩",
+              "ko_KR": "Whitemane",
+              "en_US": "Whitemane",
+              "es_MX": "Whitemane",
+              "pt_BR": "Whitemane",
+              "es_ES": "Whitemane",
+              "zh_CN": "怀特迈恩",
+              "fr_FR": "Whitemane",
+              "de_DE": "Whitemane"
+            },
+            "id": 4395,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Ovest)",
+              "ru_RU": "США (запад)",
+              "en_GB": "US West",
+              "zh_TW": "美西",
+              "ko_KR": "미국 서부",
+              "en_US": "US West",
+              "es_MX": "EE. UU. oeste",
+              "pt_BR": "EUA - Oeste",
+              "es_ES": "EE. UU. (Oeste)",
+              "zh_CN": "美国西部",
+              "fr_FR": "USA (Ouest)",
+              "de_DE": "USA West"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "whitemane"
+          }
+        ],
+        "id": 4395,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Media",
+            "ru_RU": "средне",
+            "en_GB": "Medium",
+            "zh_TW": "中",
+            "ko_KR": "보통",
+            "en_US": "Medium",
+            "es_MX": "Medio",
+            "pt_BR": "Médio",
+            "es_ES": "Medio",
+            "zh_CN": "中",
+            "fr_FR": "Moyenne",
+            "de_DE": "Mittel"
+          },
+          "type": "MEDIUM"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4374?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/Los_Angeles",
+            "name": {
+              "it_IT": "Old Blanchy",
+              "ru_RU": "Old Blanchy",
+              "en_GB": "Old Blanchy",
+              "zh_TW": "老馬布蘭契",
+              "ko_KR": "Old Blanchy",
+              "en_US": "Old Blanchy",
+              "es_MX": "Old Blanchy",
+              "pt_BR": "Old Blanchy",
+              "es_ES": "Old Blanchy",
+              "zh_CN": "老马布兰契",
+              "fr_FR": "Old Blanchy",
+              "de_DE": "Old Blanchy"
+            },
+            "id": 4374,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Ovest)",
+              "ru_RU": "США (запад)",
+              "en_GB": "US West",
+              "zh_TW": "美西",
+              "ko_KR": "미국 서부",
+              "en_US": "US West",
+              "es_MX": "EE. UU. oeste",
+              "pt_BR": "EUA - Oeste",
+              "es_ES": "EE. UU. (Oeste)",
+              "zh_CN": "美国西部",
+              "fr_FR": "USA (Ouest)",
+              "de_DE": "USA West"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "old-blanchy"
+          }
+        ],
+        "id": 4374,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4376?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/Los_Angeles",
+            "name": {
+              "it_IT": "Azuresong",
+              "ru_RU": "Azuresong",
+              "en_GB": "Azuresong",
+              "zh_TW": "碧空之歌",
+              "ko_KR": "Azuresong",
+              "en_US": "Azuresong",
+              "es_MX": "Azuresong",
+              "pt_BR": "Azuresong",
+              "es_ES": "Azuresong",
+              "zh_CN": "碧空之歌",
+              "fr_FR": "Azuresong",
+              "de_DE": "Azuresong"
+            },
+            "id": 4376,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Ovest)",
+              "ru_RU": "США (запад)",
+              "en_GB": "US West",
+              "zh_TW": "美西",
+              "ko_KR": "미국 서부",
+              "en_US": "US West",
+              "es_MX": "EE. UU. oeste",
+              "pt_BR": "EUA - Oeste",
+              "es_ES": "EE. UU. (Oeste)",
+              "zh_CN": "美国西部",
+              "fr_FR": "USA (Ouest)",
+              "de_DE": "USA West"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "azuresong"
+          }
+        ],
+        "id": 4376,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4667?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "Australia/Melbourne",
+            "name": {
+              "it_IT": "Remulos",
+              "ru_RU": "Remulos",
+              "en_GB": "Remulos",
+              "zh_TW": "雷姆洛斯",
+              "ko_KR": "Remulos",
+              "en_US": "Remulos",
+              "es_MX": "Remulos",
+              "pt_BR": "Remulos",
+              "es_ES": "Remulos",
+              "zh_CN": "雷姆洛斯",
+              "fr_FR": "Remulos",
+              "de_DE": "Remulos"
+            },
+            "id": 4667,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "Oceania",
+              "ru_RU": "Океания",
+              "en_GB": "Oceanic",
+              "zh_TW": "大洋洲",
+              "ko_KR": "오세아니아",
+              "en_US": "Oceanic",
+              "es_MX": "Oceánico",
+              "pt_BR": "Oceania",
+              "es_ES": "Oceánico",
+              "zh_CN": "大洋洲",
+              "fr_FR": "Océanique",
+              "de_DE": "Ozeanisch"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "remulos"
+          }
+        ],
+        "id": 4667,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bassa",
+            "ru_RU": "Низкая",
+            "en_GB": "Low",
+            "zh_TW": "低",
+            "ko_KR": "쾌적",
+            "en_US": "Low",
+            "es_MX": "Bajo",
+            "pt_BR": "Baixo",
+            "es_ES": "Bajo",
+            "zh_CN": "低",
+            "fr_FR": "Faible",
+            "de_DE": "Niedrig"
+          },
+          "type": "LOW"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4670?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "Australia/Melbourne",
+            "name": {
+              "it_IT": "Yojamba",
+              "ru_RU": "Yojamba",
+              "en_GB": "Yojamba",
+              "zh_TW": "尤亞姆巴",
+              "ko_KR": "Yojamba",
+              "en_US": "Yojamba",
+              "es_MX": "Yojamba",
+              "pt_BR": "Yojamba",
+              "es_ES": "Yojamba",
+              "zh_CN": "尤亚姆巴",
+              "fr_FR": "Yojamba",
+              "de_DE": "Yojamba"
+            },
+            "id": 4670,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "Oceania",
+              "ru_RU": "Океания",
+              "en_GB": "Oceanic",
+              "zh_TW": "大洋洲",
+              "ko_KR": "오세아니아",
+              "en_US": "Oceanic",
+              "es_MX": "Oceánico",
+              "pt_BR": "Oceania",
+              "es_ES": "Oceánico",
+              "zh_CN": "大洋洲",
+              "fr_FR": "Océanique",
+              "de_DE": "Ozeanisch"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "yojamba"
+          }
+        ],
+        "id": 4670,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bassa",
+            "ru_RU": "Низкая",
+            "en_GB": "Low",
+            "zh_TW": "低",
+            "ko_KR": "쾌적",
+            "en_US": "Low",
+            "es_MX": "Bajo",
+            "pt_BR": "Baixo",
+            "es_ES": "Bajo",
+            "zh_CN": "低",
+            "fr_FR": "Faible",
+            "de_DE": "Niedrig"
+          },
+          "type": "LOW"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4731?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Earthfury",
+              "ru_RU": "Earthfury",
+              "en_GB": "Earthfury",
+              "zh_TW": "大地之怒",
+              "ko_KR": "Earthfury",
+              "en_US": "Earthfury",
+              "es_MX": "Earthfury",
+              "pt_BR": "Earthfury",
+              "es_ES": "Earthfury",
+              "zh_CN": "大地之怒",
+              "fr_FR": "Earthfury",
+              "de_DE": "Earthfury"
+            },
+            "id": 4731,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "earthfury"
+          }
+        ],
+        "id": 4731,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4669?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "Australia/Melbourne",
+            "name": {
+              "it_IT": "Arugal",
+              "ru_RU": "Arugal",
+              "en_GB": "Arugal",
+              "zh_TW": "阿魯高",
+              "ko_KR": "Arugal",
+              "en_US": "Arugal",
+              "es_MX": "Arugal",
+              "pt_BR": "Arugal",
+              "es_ES": "Arugal",
+              "zh_CN": "阿鲁高",
+              "fr_FR": "Arugal",
+              "de_DE": "Arugal"
+            },
+            "id": 4669,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "Oceania",
+              "ru_RU": "Океания",
+              "en_GB": "Oceanic",
+              "zh_TW": "大洋洲",
+              "ko_KR": "오세아니아",
+              "en_US": "Oceanic",
+              "es_MX": "Oceánico",
+              "pt_BR": "Oceania",
+              "es_ES": "Oceánico",
+              "zh_CN": "大洋洲",
+              "fr_FR": "Océanique",
+              "de_DE": "Ozeanisch"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "arugal"
+          }
+        ],
+        "id": 4669,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Media",
+            "ru_RU": "средне",
+            "en_GB": "Medium",
+            "zh_TW": "中",
+            "ko_KR": "보통",
+            "en_US": "Medium",
+            "es_MX": "Medio",
+            "pt_BR": "Médio",
+            "es_ES": "Medio",
+            "zh_CN": "中",
+            "fr_FR": "Moyenne",
+            "de_DE": "Mittel"
+          },
+          "type": "MEDIUM"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4648?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Bloodsail Buccaneers",
+              "ru_RU": "Bloodsail Buccaneers",
+              "en_GB": "Bloodsail Buccaneers",
+              "zh_TW": "血帆海盜",
+              "ko_KR": "Bloodsail Buccaneers",
+              "en_US": "Bloodsail Buccaneers",
+              "es_MX": "Bloodsail Buccaneers",
+              "pt_BR": "Bloodsail Buccaneers",
+              "es_ES": "Bloodsail Buccaneers",
+              "zh_CN": "血帆海盗",
+              "fr_FR": "Bloodsail Buccaneers",
+              "de_DE": "Bloodsail Buccaneers"
+            },
+            "id": 4648,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "GdR",
+                "ru_RU": "Ролевой",
+                "en_GB": "RP",
+                "zh_TW": "角色扮演",
+                "ko_KR": "롤플레이",
+                "en_US": "RP",
+                "es_MX": "JR",
+                "pt_BR": "RP",
+                "es_ES": "JR",
+                "zh_CN": "RP",
+                "fr_FR": "JdR",
+                "de_DE": "RP"
+              },
+              "type": "RP"
+            },
+            "slug": "bloodsail-buccaneers"
+          }
+        ],
+        "id": 4648,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bassa",
+            "ru_RU": "Низкая",
+            "en_GB": "Low",
+            "zh_TW": "低",
+            "ko_KR": "쾌적",
+            "en_US": "Low",
+            "es_MX": "Bajo",
+            "pt_BR": "Baixo",
+            "es_ES": "Bajo",
+            "zh_CN": "低",
+            "fr_FR": "Faible",
+            "de_DE": "Niedrig"
+          },
+          "type": "LOW"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4738?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Maladath",
+              "ru_RU": "Nightslayer",
+              "en_GB": "Maladath",
+              "zh_TW": "瑪拉達斯",
+              "ko_KR": "Maladath",
+              "en_US": "Maladath",
+              "es_MX": "Maladath",
+              "pt_BR": "Maladath",
+              "es_ES": "Maladath",
+              "zh_CN": "玛拉达斯",
+              "fr_FR": "Maladath",
+              "de_DE": "Maladath"
+            },
+            "id": 4738,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "maladath"
+          }
+        ],
+        "id": 4738,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4726?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Sulfuras",
+              "ru_RU": "Heartseeker",
+              "en_GB": "Sulfuras",
+              "zh_TW": "薩弗拉斯",
+              "ko_KR": "Sulfuras",
+              "en_US": "Sulfuras",
+              "es_MX": "Sulfuras",
+              "pt_BR": "Sulfuras",
+              "es_ES": "Sulfuras",
+              "zh_CN": "萨弗拉斯",
+              "fr_FR": "Sulfuras",
+              "de_DE": "Sulfuras"
+            },
+            "id": 4726,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "sulfuras"
+          }
+        ],
+        "id": 4726,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4727?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Windseeker",
+              "ru_RU": "Windseeker",
+              "en_GB": "Windseeker",
+              "zh_TW": "逐風者",
+              "ko_KR": "Windseeker",
+              "en_US": "Windseeker",
+              "es_MX": "Windseeker",
+              "pt_BR": "Windseeker",
+              "es_ES": "Windseeker",
+              "zh_CN": "逐风者",
+              "fr_FR": "Windseeker",
+              "de_DE": "Windseeker"
+            },
+            "id": 4727,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "windseeker"
+          }
+        ],
+        "id": 4727,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4728?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Benediction",
+              "ru_RU": "Benediction",
+              "en_GB": "Benediction",
+              "zh_TW": "祈福",
+              "ko_KR": "Benediction",
+              "en_US": "Benediction",
+              "es_MX": "Benediction",
+              "pt_BR": "Benediction",
+              "es_ES": "Benediction",
+              "zh_CN": "祈福",
+              "fr_FR": "Benediction",
+              "de_DE": "Benediction"
+            },
+            "id": 4728,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "benediction"
+          }
+        ],
+        "id": 4728,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Media",
+            "ru_RU": "средне",
+            "en_GB": "Medium",
+            "zh_TW": "中",
+            "ko_KR": "보통",
+            "en_US": "Medium",
+            "es_MX": "Medio",
+            "pt_BR": "Médio",
+            "es_ES": "Medio",
+            "zh_CN": "中",
+            "fr_FR": "Moyenne",
+            "de_DE": "Mittel"
+          },
+          "type": "MEDIUM"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4800?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Eranikus",
+              "ru_RU": "Eranikus",
+              "en_GB": "Eranikus",
+              "zh_TW": "伊蘭尼庫斯",
+              "ko_KR": "Eranikus",
+              "en_US": "Eranikus",
+              "es_MX": "Eranikus",
+              "pt_BR": "Eranikus",
+              "es_ES": "Eranikus",
+              "zh_CN": "伊兰尼库斯",
+              "fr_FR": "Eranikus",
+              "de_DE": "Eranikus"
+            },
+            "id": 4800,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "eranikus"
+          }
+        ],
+        "id": 4800,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Bloccato",
+            "ru_RU": "Доступ ограничен",
+            "en_GB": "Locked",
+            "zh_TW": "已鎖定",
+            "ko_KR": "잠김",
+            "en_US": "Locked",
+            "es_MX": "Bloqueado",
+            "pt_BR": "Trancado",
+            "es_ES": "Bloqueado",
+            "zh_CN": "锁定",
+            "fr_FR": "Verrouillé",
+            "de_DE": "Verschl."
+          },
+          "type": "LOCKED"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4408?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Faerlina",
+              "ru_RU": "Faerlina",
+              "en_GB": "Faerlina",
+              "zh_TW": "費琳娜",
+              "ko_KR": "Faerlina",
+              "en_US": "Faerlina",
+              "es_MX": "Faerlina",
+              "pt_BR": "Faerlina",
+              "es_ES": "Faerlina",
+              "zh_CN": "法琳娜",
+              "fr_FR": "Faerlina",
+              "de_DE": "Faerlina"
+            },
+            "id": 4408,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvP",
+                "ru_RU": "PvP",
+                "en_GB": "PvP",
+                "zh_TW": "PvP",
+                "ko_KR": "전쟁",
+                "en_US": "PvP",
+                "es_MX": "JcJ",
+                "pt_BR": "JxJ",
+                "es_ES": "JcJ",
+                "zh_CN": "PvP",
+                "fr_FR": "JcJ",
+                "de_DE": "PvP"
+              },
+              "type": "PVP"
+            },
+            "slug": "faerlina"
+          }
+        ],
+        "id": 4408,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Media",
+            "ru_RU": "средне",
+            "en_GB": "Medium",
+            "zh_TW": "中",
+            "ko_KR": "보통",
+            "en_US": "Medium",
+            "es_MX": "Medio",
+            "pt_BR": "Médio",
+            "es_ES": "Medio",
+            "zh_CN": "中",
+            "fr_FR": "Moyenne",
+            "de_DE": "Mittel"
+          },
+          "type": "MEDIUM"
+        }
+      }
+    },
+    {
+      "key": {
+        "href": "https://us.api.blizzard.com/data/wow/connected-realm/4385?namespace=dynamic-classic-us"
+      },
+      "data": {
+        "realms": [
+          {
+            "is_tournament": false,
+            "timezone": "America/New_York",
+            "name": {
+              "it_IT": "Pagle",
+              "ru_RU": "Pagle",
+              "en_GB": "Pagle",
+              "zh_TW": "帕格",
+              "ko_KR": "Pagle",
+              "en_US": "Pagle",
+              "es_MX": "Pagle",
+              "pt_BR": "Pagle",
+              "es_ES": "Pagle",
+              "zh_CN": "帕格",
+              "fr_FR": "Pagle",
+              "de_DE": "Pagle"
+            },
+            "id": 4385,
+            "region": {
+              "name": {
+                "it_IT": "Classic North America",
+                "ru_RU": "Classic (Северная Америка)",
+                "en_GB": "Classic North America",
+                "zh_TW": "經典北美",
+                "ko_KR": "클래식 미국",
+                "en_US": "Classic North America",
+                "es_MX": "Classic Norteamérica",
+                "pt_BR": "Classic - América do Norte",
+                "es_ES": "Classic Norteamérica",
+                "zh_CN": "经典怀旧（北美）",
+                "fr_FR": "Classic Amérique du Nord",
+                "de_DE": "Classic - Nordamerika"
+              },
+              "id": 41
+            },
+            "category": {
+              "it_IT": "US (Est)",
+              "ru_RU": "США (восток)",
+              "en_GB": "US East",
+              "zh_TW": "美東",
+              "ko_KR": "미국 동부",
+              "en_US": "US East",
+              "es_MX": "EE. UU. este",
+              "pt_BR": "EUA - Leste",
+              "es_ES": "EE. UU. (Este)",
+              "zh_CN": "美国东部",
+              "fr_FR": "USA (Est)",
+              "de_DE": "USA Ost"
+            },
+            "locale": "enUS",
+            "type": {
+              "name": {
+                "it_IT": "PvA",
+                "ru_RU": "PvE",
+                "en_GB": "PvE",
+                "zh_TW": "PvE",
+                "ko_KR": "일반",
+                "en_US": "PvE",
+                "es_MX": "JcE",
+                "pt_BR": "JxA",
+                "es_ES": "JcE",
+                "zh_CN": "PvE",
+                "fr_FR": "JcE",
+                "de_DE": "PvE"
+              },
+              "type": "NORMAL"
+            },
+            "slug": "pagle"
+          }
+        ],
+        "id": 4385,
+        "has_queue": false,
+        "status": {
+          "name": {
+            "it_IT": "Attivo",
+            "ru_RU": "Работает",
+            "en_GB": "Up",
+            "zh_TW": "正常",
+            "ko_KR": "정상",
+            "en_US": "Up",
+            "es_MX": "Disponible",
+            "pt_BR": "Para Cima",
+            "es_ES": "Activo",
+            "zh_CN": "正常",
+            "fr_FR": "En ligne",
+            "de_DE": "Verfügbar"
+          },
+          "type": "UP"
+        },
+        "population": {
+          "name": {
+            "it_IT": "Media",
+            "ru_RU": "средне",
+            "en_GB": "Medium",
+            "zh_TW": "中",
+            "ko_KR": "보통",
+            "en_US": "Medium",
+            "es_MX": "Medio",
+            "pt_BR": "Médio",
+            "es_ES": "Medio",
+            "zh_CN": "中",
+            "fr_FR": "Moyenne",
+            "de_DE": "Mittel"
+          },
+          "type": "MEDIUM"
+        }
+      }
+    }
+  ]
+}
