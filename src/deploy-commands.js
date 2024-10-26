@@ -48,7 +48,7 @@ const rest = new REST().setToken(discordBotToken);
 		);
 
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-        console.log(`Successfully reloaded ${developmentData.length} application (/) commands.`);
+        console.log(`Successfully reloaded ${developmentData.length} development application (/) commands.`);
 	} catch (error) {
 		console.error(error);
 	}
