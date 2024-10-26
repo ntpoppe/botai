@@ -2,8 +2,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Events, Collection, GatewayIntentBits } = require('discord.js');
-const config  = require('./config.json');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const path = require('path');
+const config  = require('./config.json');
+
 
 // Initialize commands
 client.commands = new Collection();
@@ -75,5 +77,7 @@ client.on(Events.InteractionCreate, async interaction => {
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Success. Logged in as ${readyClient.user.tag}`);
 });
+
+
 
 client.login(config.discordBotToken);

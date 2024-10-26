@@ -21,21 +21,11 @@ module.exports = {
 			return interaction.reply(`There is no command with name \`${commandName}\`!`);
 		}
 
-		if (environmentName == 'development'){
-			delete require.cache[require.resolve(`./${command.data.name}.js`)];
-		} else {
-			delete require.cache[require.resolve(`../${environmentName}/${command.data.name}.js`)]
-		}
-
+		delete require.cache[require.resolve(`../${environmentName}/${command.data.name}.js`)]
 
 		try {
 
-			let newCommand = '';
-			if (environmentName == 'development'){
-				newCommand = require(`./${command.data.name}.js`);
-			} else {
-				newCommand = require(`../${environmentName}/${command.data.name}.js`);
-			}
+			let newCommand = require(`../${environmentName}/${command.data.name}.js`);;
 			interaction.client.commands.set(newCommand.data.name, newCommand);
 			await interaction.reply(`Command \`${newCommand.data.name}\` was reloaded!`);
 		} catch (error) {
