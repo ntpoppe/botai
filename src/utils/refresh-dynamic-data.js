@@ -1,14 +1,11 @@
-const BlizzardAPI = require('./api/blizzard-api');
-const SaveApiData = require('./api/save-api-data');
+const BlizzardAPI = require('@api/blizzard-api.js');
+const PrcoessEndpoints = require('@api/process-endpoints');
+const config  = require('@src/config');
 const path = require('path');
-const config  = require('./config.json');
-
-// Update data
 
 async function saveData() {
-    await saveApiData.fetchAndSaveAll();
-
-    await saveApiData.processSavedData('playerProfile', ['equipped_items']);
+    await saveApiData.fetchAll(true);
+    //await saveApiData.processSavedData('playerProfile', ['equipped_items']);
 }
 
 const mankrikId = 4384
@@ -22,16 +19,7 @@ const endpoints = [
             namespace: 'dynamic-classic-us',
             locale: 'en_US'
         },
-        savePath: path.join(__dirname, '../data/realm_data.json')
-    },
-    {
-        name: 'playerProfile',
-        path: `profile/wow/character/mankrik/retei`,
-        params: {
-            namespace: 'profile-classic-us',
-            locale: 'en_US'
-        },
-        savePath: path.join(__dirname, '../data/player_profile_data.json')
+        savePath: path.join(__dirname, '../../data/realm_data.json')
     },
     {
         name: 'auctionIndex',
@@ -40,7 +28,7 @@ const endpoints = [
             namespace: 'dynamic-classic-us',
             locale: ''
         },
-        savePath: path.join(__dirname, '../data/auction_house_index.json')
+        savePath: path.join(__dirname, '../../data/auction_house_index.json')
     },
     {
         name: 'auctionData',
@@ -49,11 +37,11 @@ const endpoints = [
             namespace: 'dynamic-classic-us',
             locale: 'en_US'
         },
-        savePath: path.join(__dirname, '../data/auction_house_data.json')
+        savePath: path.join(__dirname, '../../data/auction_house_data.json')
     }
 ];
 
 const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
-const saveApiData = new SaveApiData(blizzardAPI, endpoints);
+const processEndpoints = new ProcessEndpoints(blizzardAPI, endpoints);
 
 saveData();

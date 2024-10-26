@@ -1,9 +1,21 @@
 {
   "dependencies": {
     "discord.js": "^14.16.3",
-    "node-fetch": "^2.7.0"
+    "module-alias": "^2.2.3",
+    "node-fetch": "^2.7.0",
+    "winston": "^3.15.0"
   },
   "devDependencies": {
     "eslint": "^9.13.0"
+  },
+  "_moduleAliases": {
+    "@src": "src",
+    "@api": "src/api",
+    "@utils": "src/utils",
+    "@commands": "src/commands"
+  },
+  "scripts": {
+    "start": "node -r module-alias/register src/main.js",
+    "run-script": "node -r module-alias/register src/utils/refresh-dynamic-data.js"
   }
 }

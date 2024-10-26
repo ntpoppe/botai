@@ -2,7 +2,7 @@ const path = require('path');
 const extractKeys = require('../utils/extract-keys');
 
 // Class to handle fetching and saving data from Blizzard API endpoints
-class SaveApiData {
+class PrcoessEndpoints {
     /**
      * Initializes the SaveApiData instance
      * @param {BlizzardAPI} blizzardAPI - An instance of the BlizzardAPI class
@@ -22,19 +22,42 @@ class SaveApiData {
     }
 
     /**
-     * Fetches data from all configured endpoints and saves them to their respective file paths
+     * Fetches data from all configured endpoints and saves them to their respective file paths.
+     * @param {boolean} saveJSON - Saves data to JSON file, defaults to false.
      */
-    async fetchAndSaveAll() {
+    async fetchAll(saveJSON = false) {
         for (const endpoint of this.endpoints) {
             try {
                 console.log(`Fetching data for: ${endpoint.name}`);
                 const data = await this.blizzardAPI.fetchData(endpoint.path, endpoint.params);
-                await this.blizzardAPI.saveJSON(endpoint.savePath, data);
-                console.log(`Data for ${endpoint.name} saved to ${endpoint.savePath}`);
+
+                if (saveJSON === true){
+                    await this.blizzardAPI.saveJSON(endpoint.savePath, data);
+                    console.log(`Data for ${endpoint.name} saved to ${endpoint.savePath}`);
+                }
+
             } catch (err) {
                 console.error(`Error processing ${endpoint.name}: ${err.message}`);
             }
         }
+    }
+
+    /**
+     * Fetches data from a specific API endpoint and returns it in a structured format.
+     * @param {Object} endpoint - The endpoint configuration object.
+     * @param {boolean} saveJSON - Save to a JSON file, defaults to false.
+     * @returns {Promise<Object>} A promise that resolves to an object containing the fetched data, keyed by the endpoint name.
+     */
+    async fetchEndpoint(endpoint, saveJSON = false) {
+        console.log(`Fetching data for: ${endpoint.name}`);
+        const data = await this.blizzardAPI.fetchData(endpoint.path, endpoint.params);
+
+        if (saveJSON === true){
+            await this.blizzardAPI.saveJSON(endpoint.savePath, data);
+            console.log(`Data for ${endpoint.name} saved to ${endpoint.savePath}`);
+        }
+
+        return { [endpoint.name]: data}
     }
 
     /**
@@ -60,4 +83,4 @@ class SaveApiData {
     }
 }
 
-module.exports = SaveApiData;
+module.exports = PrcoessEndpoints;
