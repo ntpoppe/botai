@@ -1,13 +1,12 @@
 const fs = require('fs');
 const fetch = require('node-fetch'); 
-
-const config = JSON.parse(fs.readFileSync('../../config.json', 'utf8'));
+const config = require('../config.json')
 
 const media = "https://us.api.blizzard.com/profile/wow/character/mankrik/retei/character-media?namespace=profile-classic-us"
 
 async function getAccessToken() {
     const authUrl = 'https://oauth.battle.net/token';
-    const credentials = btoa(`${config.clientId}:${config.clientSecret}`);
+    const credentials = btoa(`${config.wowClientId}:${config.wowClientSecret}`);
 
     const response = await fetch(authUrl, {
         method: 'POST',

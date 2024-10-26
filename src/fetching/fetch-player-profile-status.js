@@ -1,11 +1,10 @@
 const fs = require('fs');
-const fetch = require('node-fetch'); 
-
-const config = JSON.parse(fs.readFileSync('../../config.json', 'utf8'));
+const fetch = require('node-fetch');
+const config = require('../config.json')
 
 async function getAccessToken() {
     const authUrl = 'https://oauth.battle.net/token';
-    const credentials = btoa(`${config.clientId}:${config.clientSecret}`);
+    const credentials = btoa(`${config.wowClientId}:${config.wowClientSecret}`);
 
     const response = await fetch(authUrl, {
         method: 'POST',

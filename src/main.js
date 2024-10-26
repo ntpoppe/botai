@@ -52,4 +52,4 @@ client.once(Events.ClientReady, readyClient => {
 	console.log(`Success. Logged in as ${readyClient.user.tag}`);
 });
 
-client.login(config.discord_bot_token);
+client.login(config.discordBotToken);

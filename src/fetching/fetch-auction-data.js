@@ -1,16 +1,15 @@
 const fs = require('fs');
-const fetch = require('node-fetch'); 
+const fetch = require('node-fetch');
+const config = require('../config.json')
 
 const mankrikId = 4384;
-const config = JSON.parse(fs.readFileSync('../../config.json', 'utf8'));
-
 const allianceHouseId = 2;
 const hordeHouseId = 6;
 const blackwaterHouseId = 7;
 
 async function getAccessToken() {
     const authUrl = 'https://oauth.battle.net/token';
-    const credentials = btoa(`${config.clientId}:${config.clientSecret}`);
+    const credentials = btoa(`${config.wowClientId}:${config.wowClientSecret}`);
 
     const response = await fetch(authUrl, {
         method: 'POST',
