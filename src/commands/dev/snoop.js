@@ -57,33 +57,42 @@ module.exports = {
 			} else {
 				await interaction.reply({ content: 'There was an error fetching the character profile. Please try again later.', ephemeral: true });
 			}
-	}
+		}
 	},
+
 	async createEmbed(profileData) {
-		const spacer = '\u00A0'.repeat(4);
+		const spacer = '\u00A0'.repeat(2);
+
 		const avatar = await this.getAvatar(profileData);
-		const summaryString = `${spacer}**Race:** ${profileData.race?.name || 'Unknown'} ${spacer}\\|\\|${spacer} **Level:**  ${profileData.level || 'Unknown'} ${spacer}\\|\\|${spacer} **Guild:** ${profileData.guild?.name}${spacer}`;
+		const summaryString = `Level ${profileData.level || 'Unknown'} ${profileData.gender?.name || 'Unknown'} ${profileData.race?.name || 'Unknown'}`;
+		
 		const embed = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setTitle(`Toon Profile: ${profileData.name}`)
-			.setDescription(`wtf do i put here`)
+			.setDescription(this.getTitleString(profileData))
 			.setThumbnail(avatar || 'https://i.imgur.com/AfFp7pu.png')
 			.addFields(
-				// { name: '\u200B', value: '\u200B', inline: true },
-				// { name: '\u200B', value: '\u200B', inline: true },
-				// { name: '\u200B', value: '\u200B', inline: true },
-				{ name: 'Summary', value: summaryString || 'Unknown', inline: false },
+				{ name: `${spacer}`, value: summaryString || 'Unknown', inline: false },
+				{ name: "\u200b", value: "\u200b" },
+
 			)
 			.setTimestamp()
-			.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+			//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
 		return embed
 	},
+	
 	async getAvatar(profileData) {
 		try{
 			const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
 			const processEndpoints = new ProcessEndpoints(blizzardAPI);
 			const media = profileData.media;
+
+			// delete
+			const spec = profileData.specializations.href;
+			const fetch = await processEndpoints.fetchUrl(spec, 'testspec', true);
+			const tempdata = fetch['data'];
+			console.log(tempdata);
 
 			if (media && media.href) {
 				console.log(`Fetching appearance data from: ${media.href}`);
@@ -112,4 +121,16 @@ module.exports = {
 			return null; // Return null on failure
 		}
 	},
+	getTitleString(profileData) {
+		let returnString = ''
+		const characterName = profileData.name;
+		const titleString = profileData.active_title?.name;
+		if (titleString) {
+			returnString = titleString.replace('%s', characterName);
+		} else {
+			returnString = characterName;
+		}
+
+		return returnString;
+	}
 };
