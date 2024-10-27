@@ -21,12 +21,12 @@ module.exports = {
 				.setRequired(true)
 		),
 	async execute(interaction) {
+		const characterName = interaction.options.getString('name')?.toLowerCase();
+		const realm = interaction.options.getString('realm')?.toLowerCase();
+
 		try {
 			const endpointName = 'playerProfile';
-			const characterName = interaction.options.getString('name')?.toLowerCase();
-			const realm = interaction.options.getString('realm')?.toLowerCase();
 			const namespace = 'profile-classic-us';
-
 
 			if (!characterName || !realm) {
 				return interaction.reply({ content: 'Name and realm are required!', ephemeral: true });
@@ -53,9 +53,9 @@ module.exports = {
 		} catch (error) {
 			logger.error(`Error in snoop-toon command: ${error.message}`);
 			if (interaction.deferred || interaction.replied) {
-				await interaction.editReply({ content: 'There was an error fetching the character profile. Please try again later.', ephemeral: true });
+				await interaction.editReply({ content: `There was an error fetching the profile for **${characterName}** on **${realm}**. You probably typed in the name/realm wrong.`, ephemeral: true });
 			} else {
-				await interaction.reply({ content: 'There was an error fetching the character profile. Please try again later.', ephemeral: true });
+				await interaction.reply({ content: `There was an error fetching the profile for **${characterName}** on **${realm}**. You probably typed in the name/realm wrong.`, ephemeral: true });
 			}
 		}
 	},
