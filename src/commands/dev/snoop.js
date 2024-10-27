@@ -63,36 +63,32 @@ module.exports = {
 	async createEmbed(profileData) {
 		const spacer = '\u00A0'.repeat(2);
 
-		const avatar = await this.getAvatar(profileData);
 		const summaryString = `Level ${profileData.level || 'Unknown'} ${profileData.gender?.name || 'Unknown'} ${profileData.race?.name || 'Unknown'}`;
-		
+		const specs = await this.getSpecs(profileData);
+
 		const embed = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setTitle(`Toon Profile: ${profileData.name}`)
 			.setDescription(this.getTitleString(profileData))
-			.setThumbnail(avatar || 'https://i.imgur.com/AfFp7pu.png')
+			.setThumbnail(await this.getAvatar(profileData) || 'https://i.imgur.com/AfFp7pu.png')
 			.addFields(
+				{ name: `${spacer}`, value: `${'-'.repeat(40)}`, inline: false },
 				{ name: `${spacer}`, value: summaryString || 'Unknown', inline: false },
-				{ name: "\u200b", value: "\u200b" },
-
+				//{ name: '\u200b', value: '\u200b' },
+				{ name: 'Class:', value: `${profileData.character_class.name}`, inline: true},
+				{ name: 'Specialization (active/off):', value: `${specs['main']}, ${specs['off'] || 'None'}`, inline: true},
 			)
 			.setTimestamp()
 			//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
 		return embed
 	},
-	
+
 	async getAvatar(profileData) {
 		try{
 			const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
 			const processEndpoints = new ProcessEndpoints(blizzardAPI);
 			const media = profileData.media;
-
-			// delete
-			const spec = profileData.specializations.href;
-			const fetch = await processEndpoints.fetchUrl(spec, 'testspec', true);
-			const tempdata = fetch['data'];
-			console.log(tempdata);
 
 			if (media && media.href) {
 				console.log(`Fetching appearance data from: ${media.href}`);
@@ -118,18 +114,71 @@ module.exports = {
 			return null;
 		} catch (error) {
 			console.error(`Failed to fetch avatar: ${error.message}`);
-			return null; // Return null on failure
+			return null;
 		}
 	},
+
+	async getSpecs(profileData) {
+		try {
+			const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
+			const processEndpoints = new ProcessEndpoints(blizzardAPI);
+			const specializationsKey = profileData.specializations;
+
+			if (specializationsKey && specializationsKey.href){
+				console.log(`Fetching specialization data from: ${specializationsKey.href}`);
+				const specializationData = await processEndpoints.fetchUrl(specializationsKey.href, 'testspec', true);
+				const data = specializationData['data'];
+
+				let specNames = {'main': null, 'off': null};
+
+				if (data) {
+					const groups = data.specialization_groups;
+					if (groups && Array.isArray(groups)) {
+						groups.forEach(group => {
+							const specializations = group.specializations;
+							if (specializations) {
+								const sortedSpecializations = specializations.sort((a, b) => b.spent_points - a.spent_points);
+								const topSpecName = sortedSpecializations[0]?.specialization_name?.en_US;
+	
+								if (group.is_active) {
+									specNames['main'] = topSpecName;
+								} else {
+									specNames['off'] = topSpecName;
+								}
+							}
+						})
+					}
+				}
+				
+				if (specNames['main'] == null){
+					console.warn('Unable to find specs.');
+					return null;
+				}
+
+				return specNames;
+			}
+
+			console.warn('specializationsKey returned null.')
+			return null;
+		} catch (error) {
+			console.error(`Failed to fetch specs: ${error.message}`);
+			return null;
+		}
+	},
+
 	getTitleString(profileData) {
 		let returnString = ''
 		const characterName = profileData.name;
-		const titleString = profileData.active_title?.name;
+		const guildName = profileData.guild?.name || '';
+		let titleString = profileData.active_title?.name;
 		if (titleString) {
-			returnString = titleString.replace('%s', characterName);
+			titleString = titleString.replace('%s', characterName);
 		} else {
-			returnString = characterName;
+			titleString = characterName;
 		}
+
+		let guildString = `<${guildName}>`
+		returnString = `_${guildString}\n${titleString}_`;
 
 		return returnString;
 	}
