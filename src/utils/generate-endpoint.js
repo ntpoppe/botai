@@ -33,13 +33,21 @@ const path = require('path');
  * //   savePath: '/absolute/path/to/data/player_profile_data.json'
  * // }
  */
-function generateEndpoint(name, realm, characterName, namespace, locale = 'en_US', dataDir = '../data') {
+function generateEndpoint(name, endpointData, locale = 'en_US', dataDir = '../data') {
+    const { realm, characterName, namespace } = endpointData;
+
     if (!name || !realm || !characterName || !namespace || !locale) {
         throw new Error('All parameters except locale and dataDir are required.');
     }
 
-    const pathStr = `profile/wow/character/${encodeURIComponent(realm)}/${encodeURIComponent(characterName)}`;
+    let pathStr = ''
 
+    if (name == 'playerProfile') {
+        pathStr = `profile/wow/character/${encodeURIComponent(realm)}/${encodeURIComponent(characterName)}`
+    } else {
+        throw new Error('Unknown endpoint name')
+    }
+    
     const filename = `${name}.json`; // e.g., 'playerProfile.json'
     const savePath = path.join(__dirname, dataDir, filename);
 

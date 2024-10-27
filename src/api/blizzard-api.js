@@ -40,15 +40,21 @@ class BlizzardAPI {
 
     /**
      * Generic method to fetch data from a specified endpoint
-     * @param {string} endpoint - The API endpoint path
+     * @param {string} endpointOrUrl - The API endpoint path
      * @param {object} params - Query parameters as key-value pairs
      */
-    async fetchData(endpoint, params = {}) {
+    async fetchData(endpointOrUrl, params = {}) {
         const token = await this.getAccessToken();
-        const url = new URL(`https://${this.region}.api.blizzard.com/${endpoint}`);
+        let url;
 
-        // Append query parameters
-        Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+        if (endpointOrUrl.startsWith('http://') || endpointOrUrl.startsWith('https://')) {
+            // If a full URL is provided, use it directly
+            url = new URL(endpointOrUrl);
+        } else {
+            // Otherwise, build the URL using the endpoint path and parameters
+            url = new URL(`https://${this.region}.api.blizzard.com/${endpointOrUrl}`);
+            Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+        }
 
         const response = await fetch(url.toString(), {
             headers: {
@@ -58,7 +64,7 @@ class BlizzardAPI {
         });
 
         if (!response.ok) {
-            throw new Error(`Error fetching data from ${endpoint}: ${response.statusText}`);
+            throw new Error(`Error fetching data from ${url}: ${response.statusText}`);
         }
 
         return response.json();

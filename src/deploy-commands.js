@@ -16,7 +16,7 @@ for (const folder of commandFolders) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
 		if ('data' in command && 'execute' in command) {
-            if (folder == "development"){
+            if (folder == "dev"){
                 // Deploy command to development guild
                 developmentCommands.push(command.data.toJSON());
             } else {

@@ -61,6 +61,28 @@ class PrcoessEndpoints {
     }
 
     /**
+     * Fetches data from a specific API endpoint and returns it in a structured format.
+     * This is only used for child hrefs in an inital GET request for simplicity of not needing to build endpoint objects.
+     * @param {string} url - The endpoint configuration object.
+     * @param {boolean} saveJSON - Save to a JSON file, defaults to false.
+     * @returns {Promise<Object>} A promise that resolves to an object containing the fetched data, keyed by the endpoint name.
+     */
+    async fetchUrl(url, name = 'temp', saveJSON = false){
+        console.log(`Fetching data for URL: ${url}`);
+        const data = await this.blizzardAPI.fetchData(url);
+        if (saveJSON === true){
+            const filename = `${name}.json`;
+            const savePath = path.join(__dirname, '../data', filename);
+
+            await this.blizzardAPI.saveJSON(savePath, data);
+            console.log(`Data for ${url} saved to ${savePath}`);
+        }
+
+        return { ['data']: data }
+    }
+
+
+    /**
      * Processes the saved JSON data for a specific endpoint
      * @param {string} endpointName - The name of the endpoint to process
      * @param {Array} excludeKeys - Keys to exclude during extraction
