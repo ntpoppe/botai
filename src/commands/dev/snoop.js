@@ -8,7 +8,7 @@ const logger = require('@utils/logger')
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('snoop')
-		.setDescription('Snoops a WoW cata toon, but it\'s dumb, and assumes US based.')
+		.setDescription('Get a little information about a Cataclysm character. Gives link to armory and logs.')
 		.addStringOption(option => 
 			option.setName('name')
 				.setDescription('Name of the character')
@@ -91,7 +91,7 @@ module.exports = {
 		const specs = await this.getSpecs(payload);
 
 		const embed = new EmbedBuilder()
-			.setColor(0x0099FF)
+			.setColor(0xB0B0B0)
 			.setTitle(`Toon Profile: ${profileData.name}`)
 			.setDescription(this.getTitleString(payload))
 			.setThumbnail(await this.getAvatar(payload) || 'https://i.imgur.com/AfFp7pu.png')
@@ -110,7 +110,7 @@ module.exports = {
 	},
 
 	async createButtons(payload) {
-		const armoryUrl = `https://atlasforge.gg/wow-cataclysm/armory/${payload.server}/${payload.profileData.realm.slug}/${payload.profileData.name}`;
+		const armoryUrl = `https://atlasforge.gg/wow-cataclysm/armory/${payload.region}/${payload.profileData.realm.slug}/${payload.profileData.name}`;
 		const armory = new ButtonBuilder()
 			.setLabel('Armory')
 			.setURL(armoryUrl)
@@ -118,7 +118,7 @@ module.exports = {
 		
 		const logs = new ButtonBuilder()
 			.setLabel('Logs')
-			.setURL(`https://classic.warcraftlogs.com/character/${payload.server}/${payload.profileData.realm.slug}/${payload.profileData.name}`)
+			.setURL(`https://classic.warcraftlogs.com/character/${payload.region}/${payload.profileData.realm.slug}/${payload.profileData.name}`)
 			.setStyle(ButtonStyle.Link);
 
 		const row = new ActionRowBuilder()
