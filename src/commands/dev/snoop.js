@@ -35,11 +35,10 @@ module.exports = {
 		const characterName = interaction.options.getString('name')?.toLowerCase();
 		const realm = interaction.options.getString('realm')?.toLowerCase();
 		const region = interaction.options.getString('region')?.toLowerCase() || 'us';
+		const endpointName = 'playerProfile';
+	    const namespace = `profile-classic-${region}`;
 
 		try {
-			const endpointName = 'playerProfile';
-			const namespace = `profile-classic-${region}`;
-
 			if (!characterName || !realm) {
 				return interaction.reply({ content: 'Name and realm are required!', ephemeral: true });
 			}
@@ -96,11 +95,11 @@ module.exports = {
 			.setDescription(this.getTitleString(payload))
 			.setThumbnail(await this.getAvatar(payload) || 'https://i.imgur.com/AfFp7pu.png')
 			.addFields(
-				{ name: `${spacer}`, value: `${'-'.repeat(45)}`, inline: false },
+				{ name: `${spacer}`, value: `${'-'.repeat(50)}`, inline: false },
 				{ name: `${spacer}`, value: summaryString || 'Unknown', inline: false },
 				{ name: 'Class:', value: `${profileData.character_class.name}`, inline: true} ,
 				{ name: 'Specializations:', value: `${specs['main']}, ${specs['off'] || 'None'}`, inline: true },
-				{ name: `${spacer}`, value: `**Item level:** ${this.getEquipmentLevel(payload)}` },
+				{ name: 'Item level:', value: `${this.getEquipmentLevel(payload)}`, inline: true },
 				{ name: `${spacer}`, value: `${spacer}`, inline: false },
 				{ name: `${spacer}`, value: `_Last login: ${this.getlastLogin(payload)}_` }
 			)
