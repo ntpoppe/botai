@@ -6,6 +6,7 @@
     "module-alias": "^2.2.3",
     "mongodb": "^6.10.0",
     "node-fetch": "^2.7.0",
+    "pg": "^8.13.1",
     "winston": "^3.15.0"
   },
   "devDependencies": {
@@ -13,8 +14,8 @@
   },
   "_moduleAliases": {
     "@src": "src",
+    "@api": "src/api",
     "@bot": "src/bot",
-    "@api": "src/bot/api",
     "@utils": "src/bot/utils",
     "@commands": "src/bot/commands"
   },

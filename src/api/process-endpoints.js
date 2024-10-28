@@ -1,5 +1,4 @@
 const path = require('path');
-const extractKeys = require('../utils/extract-keys');
 
 // Class to handle fetching and saving data from Blizzard API endpoints
 class PrcoessEndpoints {
