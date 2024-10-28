@@ -1,5 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas')
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const BlizzardAPI = require('@api/blizzard-api')
 const ProcessEndpoints = require('@api/process-endpoints')
 const config = require('@src/config.json')
@@ -20,12 +19,14 @@ module.exports = {
 				.setDescription('Realm of the character.')
 				.setRequired(true)
 		),
+
 	async execute(interaction) {
 		const characterName = interaction.options.getString('name')?.toLowerCase();
 		const realm = interaction.options.getString('realm')?.toLowerCase();
 
 		try {
 			const endpointName = 'playerProfile';
+			const server = 'us'; // TODO: get other servers
 			const namespace = 'profile-classic-us';
 
 			if (!characterName || !realm) {
@@ -43,13 +44,24 @@ module.exports = {
 			const data = await processEndpoints.fetchEndpoint(endpoint);
 			const profileData = data[endpointName];
 
+			const apiPayload = {
+				blizzardAPI,
+				processEndpoints,
+				profileData,
+				server,
+			};
+
 			if (!profileData) {
                 return interaction.editReply({ content: `No profile data found for **${characterName}** on **${realm}**.`, ephemeral: true });
             }
 
-			const profileEmbed = await this.createEmbed(profileData);
+			const profileEmbed = await this.createEmbed(apiPayload);
+			const buttons = await this.createButtons(apiPayload);
 
-			await interaction.editReply({ embeds: [profileEmbed] });
+			await interaction.editReply({
+				embeds: [profileEmbed],
+				components: [buttons],
+			});
 		} catch (error) {
 			logger.error(`Error in snoop-toon command: ${error.message}`);
 			if (interaction.deferred || interaction.replied) {
@@ -60,39 +72,57 @@ module.exports = {
 		}
 	},
 
-	async createEmbed(profileData) {
+	async createEmbed(payload) {
+		const profileData = payload.profileData;
 		const spacer = '\u00A0'.repeat(2);
 
 		const summaryString = `Level ${profileData.level || 'Unknown'} ${profileData.gender?.name || 'Unknown'} ${profileData.race?.name || 'Unknown'}`;
-		const specs = await this.getSpecs(profileData);
+		const specs = await this.getSpecs(payload);
 
 		const embed = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setTitle(`Toon Profile: ${profileData.name}`)
-			.setDescription(this.getTitleString(profileData))
-			.setThumbnail(await this.getAvatar(profileData) || 'https://i.imgur.com/AfFp7pu.png')
+			.setDescription(this.getTitleString(payload))
+			.setThumbnail(await this.getAvatar(payload) || 'https://i.imgur.com/AfFp7pu.png')
 			.addFields(
-				{ name: `${spacer}`, value: `${'-'.repeat(40)}`, inline: false },
+				{ name: `${spacer}`, value: `${'-'.repeat(45)}`, inline: false },
 				{ name: `${spacer}`, value: summaryString || 'Unknown', inline: false },
-				//{ name: '\u200b', value: '\u200b' },
-				{ name: 'Class:', value: `${profileData.character_class.name}`, inline: true},
-				{ name: 'Specialization (active/off):', value: `${specs['main']}, ${specs['off'] || 'None'}`, inline: true},
+				{ name: 'Class:', value: `${profileData.character_class.name}`, inline: true} ,
+				{ name: 'Specializations:', value: `${specs['main']}, ${specs['off'] || 'None'}`, inline: true },
+				{ name: `${spacer}`, value: `**Item level:** ${this.getEquipmentLevel(payload)}` },
+				{ name: `${spacer}`, value: `${spacer}`, inline: false },
+				{ name: `${spacer}`, value: `_Last login: ${this.getlastLogin(payload)}_` }
 			)
 			.setTimestamp()
-			//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
 		return embed
 	},
 
-	async getAvatar(profileData) {
+	async createButtons(payload) {
+		const armoryUrl = `https://atlasforge.gg/wow-cataclysm/armory/${payload.server}/${payload.profileData.realm.slug}/${payload.profileData.name}`;
+		const armory = new ButtonBuilder()
+			.setLabel('Armory')
+			.setURL(armoryUrl)
+			.setStyle(ButtonStyle.Link);
+		
+		const logs = new ButtonBuilder()
+			.setLabel('Logs')
+			.setURL(`https://classic.warcraftlogs.com/character/${payload.server}/${payload.profileData.realm.slug}/${payload.profileData.name}`)
+			.setStyle(ButtonStyle.Link);
+
+		const row = new ActionRowBuilder()
+			.addComponents(armory, logs);
+
+		return row;
+	},
+
+	async getAvatar(payload) {
 		try{
-			const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
-			const processEndpoints = new ProcessEndpoints(blizzardAPI);
-			const media = profileData.media;
+			const media = payload.profileData?.media;
 
 			if (media && media.href) {
 				console.log(`Fetching appearance data from: ${media.href}`);
-				const mediaData = await processEndpoints.fetchUrl(media.href);
+				const mediaData = await payload.processEndpoints.fetchUrl(media.href);
 				const data = mediaData['data']
 
 				if (data && Array.isArray(data.assets)) {
@@ -118,15 +148,13 @@ module.exports = {
 		}
 	},
 
-	async getSpecs(profileData) {
+	async getSpecs(payload) {
 		try {
-			const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
-			const processEndpoints = new ProcessEndpoints(blizzardAPI);
-			const specializationsKey = profileData.specializations;
+			const specializationsKey = payload.profileData?.specializations;
 
 			if (specializationsKey && specializationsKey.href){
 				console.log(`Fetching specialization data from: ${specializationsKey.href}`);
-				const specializationData = await processEndpoints.fetchUrl(specializationsKey.href, 'testspec', true);
+				const specializationData = await payload.processEndpoints.fetchUrl(specializationsKey.href, 'testspec', true);
 				const data = specializationData['data'];
 
 				let specNames = {'main': null, 'off': null};
@@ -166,7 +194,34 @@ module.exports = {
 		}
 	},
 
-	getTitleString(profileData) {
+	getEquipmentLevel(payload) {
+		try {
+			const equippedItemLevelKey = payload.profileData?.equipped_item_level;
+			
+			if (!equippedItemLevelKey) throw new Error(`lastLogin not found for ${payload.profileData.name}`);	
+			
+			return equippedItemLevelKey;
+		} catch (error) {
+			console.error(`Failed to fetch equipmentLevel: ${error.message}`);
+			return null;
+		}
+	},
+
+	getlastLogin(payload) {
+		try {
+			const lastLoginKey = payload.profileData?.last_login_timestamp;
+			if (!lastLoginKey) throw new Error(`lastLogin not found for ${payload.profileData.name}`);			
+
+			const unixTimestamp = Math.floor(lastLoginKey / 1000);
+			return `<t:${unixTimestamp}:F>`; // Example: "October 25, 2024 3:45 PM"
+		} catch (error) {
+			console.error(`Failed to fetch lastLogin: ${error.message}`);
+			return null;
+		}
+	},
+
+	getTitleString(payload) {
+		const profileData = payload.profileData;
 		let returnString = ''
 		const characterName = profileData.name;
 		const guildName = profileData.guild?.name || '';
