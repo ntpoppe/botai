@@ -1,11 +1,10 @@
+require('dotenv').config();
 const BlizzardAPI = require('@api/blizzard-api.js');
 const ProcessEndpoints = require('@api/process-endpoints');
-const config  = require('@src/config');
 const path = require('path');
 
 async function saveData() {
     await processEndpoints.fetchAll(true);
-    //await saveApiData.processSavedData('playerProfile', ['equipped_items']);
 }
 
 const mankrikId = 4384
@@ -41,7 +40,7 @@ const endpoints = [
     },
 ];
 
-const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
+const blizzardAPI = new BlizzardAPI(process.env.WOW_CLIENT_ID, process.env.WOW_SECRET_ID);
 const processEndpoints = new ProcessEndpoints(blizzardAPI, endpoints);
 
 saveData();

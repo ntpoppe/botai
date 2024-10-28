@@ -2,7 +2,9 @@
   "dependencies": {
     "canvas": "^2.11.2",
     "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
     "module-alias": "^2.2.3",
+    "mongodb": "^6.10.0",
     "node-fetch": "^2.7.0",
     "winston": "^3.15.0"
   },
@@ -11,13 +13,14 @@
   },
   "_moduleAliases": {
     "@src": "src",
-    "@api": "src/api",
-    "@utils": "src/utils",
-    "@commands": "src/commands"
+    "@bot": "src/bot",
+    "@api": "src/bot/api",
+    "@utils": "src/bot/utils",
+    "@commands": "src/bot/commands"
   },
   "scripts": {
-    "start": "node -r module-alias/register src/main.js",
+    "start": "node -r module-alias/register src/bot/run.js",
     "deploy-commands": "node -r module-alias/register src/deploy-commands.js",
-    "run-script": "node -r module-alias/register src/utils/refresh-dynamic-data.js"
+    "refresh-data": "node -r module-alias/register src/utils/refresh-dynamic-data.js"
   }
 }

@@ -1,6 +1,5 @@
 const fs = require('fs').promises;
 const fetch = require('node-fetch');
-const config = require('../config.json'); // Adjust the path as needed
 
 class BlizzardAPI {
     constructor(clientId, clientSecret, region = 'us') {

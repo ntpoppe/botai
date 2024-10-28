@@ -72,7 +72,7 @@ class PrcoessEndpoints {
         const data = await this.blizzardAPI.fetchData(url);
         if (saveJSON === true){
             const filename = `${name}.json`;
-            const savePath = path.join(__dirname, '../../data', filename);
+            const savePath = path.join(__dirname, '../data', filename);
 
             await this.blizzardAPI.saveJSON(savePath, data);
             console.log(`Data for ${url} saved to ${savePath}`);

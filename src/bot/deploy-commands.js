@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { REST, Routes } = require('discord.js');
 const { discordBotToken, discordClientId, developmentGuildId } = require('./config.json');
 const fs = require('node:fs');
@@ -29,7 +30,7 @@ for (const folder of commandFolders) {
 	}
 }
 
-const rest = new REST().setToken(discordBotToken);
+const rest = new REST().setToken(process.env.DISCORD_BOT_TOKEN);
 
 // Deploy
 (async () => {
@@ -38,12 +39,12 @@ const rest = new REST().setToken(discordBotToken);
         console.log(`Started refreshing ${developmentCommands.length} development application (/) commands.`);
 
 		const data = await rest.put(
-			Routes.applicationCommands(discordClientId),
+			Routes.applicationCommands(process.env.DISCORD_CLIENT_ID),
 			{ body: commands },
 		);
 
         const developmentData = await rest.put(
-			Routes.applicationGuildCommands(discordClientId, developmentGuildId),
+			Routes.applicationGuildCommands(process.env.DISCORD_CLIENT_ID, process.env.DEVELOPMENT_GUILD_ID),
 			{ body: developmentCommands },
 		);
 

@@ -1,9 +1,10 @@
+require('dotenv').config();
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const BlizzardAPI = require('@api/blizzard-api')
-const ProcessEndpoints = require('@api/process-endpoints')
-const config = require('@src/config.json')
-const generateEndpoint = require('@utils/generate-endpoint')
-const logger = require('@utils/logger')
+const BlizzardAPI = require('@api/blizzard-api');
+const ProcessEndpoints = require('@api/process-endpoints');
+const generateEndpoint = require('@api/generate-endpoint');
+const config = require('@bot/config.json');
+const logger = require('@utils/logger');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -48,7 +49,7 @@ module.exports = {
 			const pathData = { 'realm': realm, 'characterName': characterName , 'namespace': namespace};
 			const endpoint = generateEndpoint(endpointName, pathData, 'en_US','../../data');
 
-			const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret, region);
+			const blizzardAPI = new BlizzardAPI(process.env.WOW_CLIENT_ID, process.env.WOW_CLIENT_SECRET, region);
 			const processEndpoints = new ProcessEndpoints(blizzardAPI);
 
 			const data = await processEndpoints.fetchEndpoint(endpoint);
@@ -164,7 +165,7 @@ module.exports = {
 
 			if (specializationsKey && specializationsKey.href){
 				console.log(`Fetching specialization data from: ${specializationsKey.href}`);
-				const specializationData = await payload.processEndpoints.fetchUrl(specializationsKey.href, 'testspec', true);
+				const specializationData = await payload.processEndpoints.fetchUrl(specializationsKey.href);
 				const data = specializationData['data'];
 
 				let specNames = {'main': null, 'off': null};
