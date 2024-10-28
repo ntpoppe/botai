@@ -18,16 +18,27 @@ module.exports = {
 			option.setName('realm')
 				.setDescription('Realm of the character.')
 				.setRequired(true)
+		)
+		.addStringOption(option => 
+			option.setName('region')
+				.setDescription('Region of the character')
+				.setRequired(false)
+				.addChoices(
+					{ name: 'us', value: 'us' },
+					{ name: 'eu', value: 'eu' },
+					{ name: 'kr', value: 'kr' },
+					{ name: 'tw', value: 'tw' },
+				)
 		),
 
 	async execute(interaction) {
 		const characterName = interaction.options.getString('name')?.toLowerCase();
 		const realm = interaction.options.getString('realm')?.toLowerCase();
+		const region = interaction.options.getString('region')?.toLowerCase() || 'us';
 
 		try {
 			const endpointName = 'playerProfile';
-			const server = 'us'; // TODO: get other servers
-			const namespace = 'profile-classic-us';
+			const namespace = `profile-classic-${region}`;
 
 			if (!characterName || !realm) {
 				return interaction.reply({ content: 'Name and realm are required!', ephemeral: true });
@@ -35,10 +46,10 @@ module.exports = {
 
 			await interaction.deferReply();
 
-			const pathData = { "realm": realm, "characterName": characterName , "namespace": namespace};
+			const pathData = { 'realm': realm, 'characterName': characterName , 'namespace': namespace};
 			const endpoint = generateEndpoint(endpointName, pathData, 'en_US','../../data');
 
-			const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret);
+			const blizzardAPI = new BlizzardAPI(config.wowClientId, config.wowClientSecret, region);
 			const processEndpoints = new ProcessEndpoints(blizzardAPI);
 
 			const data = await processEndpoints.fetchEndpoint(endpoint);
@@ -48,7 +59,7 @@ module.exports = {
 				blizzardAPI,
 				processEndpoints,
 				profileData,
-				server,
+				region,
 			};
 
 			if (!profileData) {
@@ -65,9 +76,9 @@ module.exports = {
 		} catch (error) {
 			logger.error(`Error in snoop-toon command: ${error.message}`);
 			if (interaction.deferred || interaction.replied) {
-				await interaction.editReply({ content: `There was an error fetching the profile for **${characterName}** on **${realm}**. You probably typed in the name/realm wrong.`, ephemeral: true });
+				await interaction.editReply({ content: `There was an error fetching the profile for **${characterName}** on **${realm}**. You probably typed in the name/realm/region wrong.`, ephemeral: true });
 			} else {
-				await interaction.reply({ content: `There was an error fetching the profile for **${characterName}** on **${realm}**. You probably typed in the name/realm wrong.`, ephemeral: true });
+				await interaction.reply({ content: `There was an error fetching the profile for **${characterName}** on **${realm}**. You probably typed in the name/realm/region wrong.`, ephemeral: true });
 			}
 		}
 	},
