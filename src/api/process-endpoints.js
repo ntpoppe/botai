@@ -1,7 +1,7 @@
 const path = require('path');
 
 // Class to handle fetching and saving data from Blizzard API endpoints
-class PrcoessEndpoints {
+class ProcessEndpoints {
     /**
      * Initializes the SaveApiData instance
      * @param {BlizzardAPI} blizzardAPI - An instance of the BlizzardAPI class
@@ -104,4 +104,4 @@ class PrcoessEndpoints {
     }
 }
 
-module.exports = PrcoessEndpoints;
+module.exports = ProcessEndpoints;

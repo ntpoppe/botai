@@ -41,8 +41,11 @@ function generateEndpoint(name, endpointData, locale = 'en_US', dataDir = '../da
     if (name == 'playerProfile') {
         const { realm, characterName } = endpointData;
         pathStr = `profile/wow/character/${encodeURIComponent(realm)}/${encodeURIComponent(characterName)}`;
-    } else if (name == 'auction') {
-        pathStr = ``;
+    } else if (name == 'realmData') {
+        pathStr = `data/wow/search/connected-realm`;
+    } else if (name == 'auctionHouseIndex') {
+        const { realmId } = endpointData;
+        pathStr = `data/wow/connected-realm/${realmId}/auctions/index`
     } else {
         throw new Error('Unknown endpoint name');
     }

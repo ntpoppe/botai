@@ -15,6 +15,7 @@
   "_moduleAliases": {
     "@src": "src",
     "@api": "src/api",
+    "@db": "Src/db",
     "@bot": "src/bot",
     "@utils": "src/bot/utils",
     "@commands": "src/bot/commands"
@@ -22,6 +23,9 @@
   "scripts": {
     "start": "node -r module-alias/register src/bot/run.js",
     "deploy-commands": "node -r module-alias/register src/deploy-commands.js",
+    "update-realm-data": "node -r module-alias/register src/db/upsert-realm-data",
+    "update-auction-data": "node -r module-alias/register src/db/upsert-auction-data",
+    "update-auction-house-data": "node -r module-alias/register src/db/upsert-auction-index",
     "refresh-data": "node -r module-alias/register src/utils/refresh-dynamic-data.js"
   }
 }
