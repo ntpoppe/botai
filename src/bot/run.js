@@ -1,7 +1,7 @@
 require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Events, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Events, Collection, GatewayIntentBits, ActivityType } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Initialize commands
@@ -70,9 +70,37 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
+const statuses = [
+    {
+        activities: [{ name: 'you...', type: ActivityType.Watching }],
+        status: 'online'
+    },
+    {
+        activities: [{ name: 'to Hiki bitch', type: ActivityType.Listening }],
+        status: 'online'
+    },
+    {
+        activities: [{ name: 'Skullmasterj swim across lava', type: ActivityType.Watching }],
+        status: 'online'
+    },
+    {
+        activities: [{ name: 'LFG argue', type: ActivityType.Watching }],
+        status: 'online'
+    }
+];
+
+function setRandomStatus() {
+    const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+    client.user.setPresence(randomStatus);
+}
+
 // Bring the bot online
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Success. Logged in as ${readyClient.user.tag}`);
+
+    setRandomStatus();
+
+    setInterval(setRandomStatus, 900000); 
 });
 
 client.login(process.env.DISCORD_BOT_TOKEN);
