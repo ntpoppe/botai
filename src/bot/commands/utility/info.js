@@ -21,7 +21,8 @@ module.exports = {
 			const user = interaction.options.getUser('target') || interaction.user;
 			await interaction.reply(`User: ${user.username}, ID: ${user.id}`);
 		} else if (subcommand === 'server') {
-			await interaction.reply(`Server: ${interaction.guild.name}, ID: ${interaction.guild.id}`);
+			const { guild } = interaction;
+ 		    await interaction.reply(`Server name: ${guild.name}\nTotal members: ${guild.memberCount}`);
 		}
-}
+	}
 };
