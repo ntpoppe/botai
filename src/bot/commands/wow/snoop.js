@@ -17,7 +17,7 @@ module.exports = {
 		.addStringOption(option => 
 			option.setName('realm')
 				.setDescription('Realm of the character.')
-				.setRequired(true)
+				.setRequired(false)
 		)
 		.addStringOption(option => 
 			option.setName('region')
@@ -33,7 +33,7 @@ module.exports = {
 
 	async execute(interaction) {
 		const characterName = interaction.options.getString('name')?.toLowerCase();
-		const realm = interaction.options.getString('realm')?.toLowerCase();
+		const realm = interaction.options.getString('realm')?.toLowerCase() || 'mankrik';
 		const region = interaction.options.getString('region')?.toLowerCase() || 'us';
 		const endpointName = 'playerProfile';
 	    const namespace = `profile-classic-${region}`;

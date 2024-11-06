@@ -14,28 +14,28 @@ async function convertAuctionHouseIndexJson(realmId, region = 'us'){
     const endpoint = generateEndpoint(endpointName, endpointData);
     const response = await processEndpoints.fetchEndpoint(endpoint);
     const data = response[endpointName];
-    const auctions = data.auctions;
+    const auctionHouses = data.auctions;
 
-    const auctionsToProcess = [];
-    auctions.forEach(auction => {
+    const auctionsHousesToProcess = [];
+    auctionHouses.forEach(auctionHouse => {
         const entry = {
-            name: auction.name,
-            houseId: auction.id,
+            name: auctionHouse.name,
+            houseId: auctionHouse.id,
             realmId: realmId,
             region: region,
-            unique: `${auction.name}-${realmId}-${region}`
+            unique: `${auctionHouse.name}-${realmId}-${region}`
         }
 
-        auctionsToProcess.push(entry);
+        auctionsHousesToProcess.push(entry);
     });
 
-    return auctionsToProcess;
+    return auctionsHousesToProcess;
 }
 
-async function upsertAuctionHouseIndexData(auctionsToProcess){
+async function upsertAuctionHouseIndexData(auctionHousesToProcess){
     const client = await pool.connect();
     try {
-        for (const auction of auctionsToProcess) {
+        for (const auctionHouse of auctionHousesToProcess) {
             const query = `
                 INSERT INTO auction_house_data (name, house_id, realm_id, region, unique_string)
                 VALUES ($1, $2, $3, $4, $5)
@@ -46,9 +46,9 @@ async function upsertAuctionHouseIndexData(auctionsToProcess){
                     realm_id = EXCLUDED.realm_id,
                     region = EXCLUDED.region;
             `;
-            const values = [auction.name, auction.houseId, auction.realmId, auction.region, auction.unique];
+            const values = [auctionHouse.name, auctionHouse.houseId, auctionHouse.realmId, auctionHouse.region, auctionHouse.unique];
             await client.query(query, values);
-            console.log(`Upserted row for ${auction.name} in realm ${auction.realmId}`);
+            console.log(`Upserted row for ${auctionHouse.name} in realm ${auctionHouse.realmId}`);
         }
     } catch (error) {
         console.error('Error upserting realm data:', error.stack);

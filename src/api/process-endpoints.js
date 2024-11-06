@@ -44,12 +44,15 @@ class ProcessEndpoints {
     /**
      * Fetches data from a specific API endpoint and returns it in a structured format.
      * @param {Object} endpoint - The endpoint configuration object.
+     * @param {Object} additionalParams - Additional query parameters to include in the request. (ex. pages)
      * @param {boolean} saveJSON - Save to a JSON file, defaults to false.
      * @returns {Promise<Object>} A promise that resolves to an object containing the fetched data, keyed by the endpoint name.
      */
-    async fetchEndpoint(endpoint, saveJSON = false) {
+    async fetchEndpoint(endpoint, additionalParams = {}, saveJSON = false) {
         console.log(`Fetching data for: ${endpoint.name}`);
-        const data = await this.blizzardAPI.fetchData(endpoint.path, endpoint.params);
+
+        const params = { ...endpoint.params, ...additionalParams };
+        const data = await this.blizzardAPI.fetchData(endpoint.path, params);
 
         if (saveJSON === true){
             await this.blizzardAPI.saveJSON(endpoint.savePath, data);
@@ -61,7 +64,7 @@ class ProcessEndpoints {
 
     /**
      * Fetches data from a specific API endpoint and returns it in a structured format.
-     * This is only used for child hrefs in an inital GET request for simplicity of not needing to build endpoint objects.
+     * This is only used for child hrefs in an initial GET request for simplicity of not needing to build endpoint objects.
      * @param {string} url - The endpoint configuration object.
      * @param {boolean} saveJSON - Save to a JSON file, defaults to false.
      * @returns {Promise<Object>} A promise that resolves to an object containing the fetched data, keyed by the endpoint name.

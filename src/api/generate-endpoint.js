@@ -33,23 +33,35 @@ const path = require('path');
  * //   savePath: '/absolute/path/to/data/player_profile_data.json'
  * // }
  */
-function generateEndpoint(name, endpointData, locale = 'en_US', dataDir = '../data') {
-    const { namespace } = endpointData;
+function generateEndpoint(name, endpointParams, locale = 'en_US', dataDir = '../data') {
+    const { namespace } = endpointParams;
 
-    let pathStr = '';
+    const endpointTemplates = {
+        'playerProfile': `profile/wow/character/{realm}/{characterName}`,
+        'realmData': `data/wow/search/connected-realm`,
+        'itemClassIndex': `data/wow/item-class/index`,
+        'itemClass': `data/wow/item-class/{itemClassId}`,
+        'itemSearch': `data/wow/search/item`,
+        'regionIndex': `data/wow/region/index`,
+        'auctionHouseIndex': `data/wow/connected-realm/{realmId}/auctions/index`,
+        'auctionHouseListings': `data/wow/connected-realm/{realmId}/auctions/{auctionHouseId}`
+    };
 
-    if (name == 'playerProfile') {
-        const { realm, characterName } = endpointData;
-        pathStr = `profile/wow/character/${encodeURIComponent(realm)}/${encodeURIComponent(characterName)}`;
-    } else if (name == 'realmData') {
-        pathStr = `data/wow/search/connected-realm`;
-    } else if (name == 'auctionHouseIndex') {
-        const { realmId } = endpointData;
-        pathStr = `data/wow/connected-realm/${realmId}/auctions/index`
-    } else {
-        throw new Error('Unknown endpoint name');
+    const template = endpointTemplates[name];
+
+    if (!template) {
+        throw new Error(`Unknown endpoint name: ${name}`);
     }
-    
+
+    // Replace placeholders with actual values from endpointData
+    const pathStr = template.replace(/\{(\w+)\}/g, (_, key) => {
+        const value = endpointParams[key];
+        if (value === undefined) {
+            throw new Error(`Missing parameter "${key}" for endpoint "${name}"`);
+        }
+        return encodeURIComponent(value);
+    });
+
     const filename = `${name}.json`; // e.g., 'playerProfile.json'
     const savePath = path.join(__dirname, dataDir, filename);
 
