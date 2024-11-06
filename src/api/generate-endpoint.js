@@ -34,13 +34,14 @@ const path = require('path');
  * // }
  */
 function generateEndpoint(name, endpointParams, locale = 'en_US', dataDir = '../data') {
-    const { namespace } = endpointParams;
+    const { namespace, orderby, id, _pageSize, _page } = endpointParams;
 
     const endpointTemplates = {
         'playerProfile': `profile/wow/character/{realm}/{characterName}`,
         'realmData': `data/wow/search/connected-realm`,
         'itemClassIndex': `data/wow/item-class/index`,
         'itemClass': `data/wow/item-class/{itemClassId}`,
+        'itemMedia': `data/wow/media/item/{itemId}`,
         'itemSearch': `data/wow/search/item`,
         'regionIndex': `data/wow/region/index`,
         'auctionHouseIndex': `data/wow/connected-realm/{realmId}/auctions/index`,
@@ -67,7 +68,11 @@ function generateEndpoint(name, endpointParams, locale = 'en_US', dataDir = '../
 
     const params = {
         namespace,
-        locale
+        locale,
+        orderby,
+        id,
+        _pageSize,
+        _page
     };
 
     return {

@@ -42,7 +42,7 @@ class BlizzardAPI {
      * @param {string} endpointOrUrl - The API endpoint path
      * @param {object} params - Query parameters as key-value pairs
      */
-    async fetchData(endpointOrUrl, params = {}) {
+    async fetchData(endpointOrUrl, params = {}, retries = 3, backoff = 2000, timeout = 10000) {
         const token = await this.getAccessToken();
         let url;
 
@@ -55,18 +55,57 @@ class BlizzardAPI {
             Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
         }
 
-        const response = await fetch(url.toString(), {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
+        const temp = url.toString();
+
+        const fetchWithTimeout = async (resource, options = {}) => {
+            const controller = new AbortController();
+            const { signal } = controller;
+            options.signal = signal;
+    
+            // Timeout logic
+            const timeoutId = setTimeout(() => controller.abort(), timeout);
+    
+            try {
+                const response = await fetch(resource, options);
+                clearTimeout(timeoutId);
+                return response;
+            } catch (error) {
+                clearTimeout(timeoutId);
+                throw error;
             }
-        });
+        };
 
-        if (!response.ok) {
-            throw new Error(`Error fetching data from ${url}: ${response.statusText}`);
+        for (let attempt = 1; attempt <= retries; attempt++) {
+            try {
+                const response = await fetchWithTimeout(url.toString(), {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+    
+                if (!response.ok) {
+                    throw new Error(`Error fetching data from ${url}: ${response.statusText}`);
+                }
+    
+                return await response.json();
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    console.warn(`Request to ${url} timed out on attempt ${attempt}. Retrying...`);
+                } else {
+                    console.error(`Error fetching data from ${url} on attempt ${attempt}: ${error.message}`);
+                }
+    
+                if (attempt < retries) {
+                    // Wait and retry with exponential backoff
+                    await new Promise(resolve => setTimeout(resolve, backoff));
+                    backoff *= 2; // Double the backoff delay for the next attempt
+                } else {
+                    // Max retries reached, rethrow error
+                    throw new Error(`Failed to fetch data from ${url} after ${retries} attempts: ${error.message}`);
+                }
+            }
         }
-
-        return response.json();
     }
 
     /**

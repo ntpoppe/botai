@@ -6,67 +6,46 @@ const generateEndpoint = require('@api/generate-endpoint');
 async function convertItemClassIndexJson(region = 'us') {
     const blizzardAPI = new BlizzardAPI(process.env.WOW_CLIENT_ID, process.env.WOW_CLIENT_SECRET, region);
     const processEndpoints = new ProcessEndpoints(blizzardAPI);
-    const endpointName = 'itemClassIndex';
-
-    const endpointParams = { 'namespace': `static-classic-${region}`};
-    const endpoint = generateEndpoint(endpointName, endpointParams);
-    const response = await processEndpoints.fetchEndpoint(endpoint);
-    const data = response[endpointName].item_classes;
-    
+    const endpointParams = { 'namespace': `static-classic-${region}` };
     const allItems = [];
+    let startingItemId = 1;
 
-    for (const itemClassRef of data) {
-        const itemClassId = itemClassRef.id;
-        console.log(`Collecting from class ID ${itemClassId}`);
+    try {
+        do {
+            const searchEndpointName = 'itemSearch';
+            const searchEndpointParams = {
+                ...endpointParams,
+                'orderby': 'id',
+                'id': `[${startingItemId},]`, 
+                '_pageSize': 1000,
+                '_page': 1 
+            };
+            const searchEndpoint = generateEndpoint(searchEndpointName, searchEndpointParams);
+            const searchResponse = await processEndpoints.fetchEndpoint(searchEndpoint);
 
-        try {
-            const itemClassEndpointName = 'itemClass';
-            const itemClassEndpointParams = { ...endpointParams, itemClassId: itemClassId }; 
-            const itemClassEndpoint = generateEndpoint(itemClassEndpointName, itemClassEndpointParams);
-            const itemClassResponse = await processEndpoints.fetchEndpoint(itemClassEndpoint);
-            
-            const itemSubclasses = itemClassResponse[itemClassEndpointName].item_subclasses || [];
+            if (
+                searchResponse[searchEndpointName] &&
+                searchResponse[searchEndpointName].results &&
+                searchResponse[searchEndpointName].results.length > 0
+            ) {
+                const items = searchResponse[searchEndpointName].results;
+                allItems.push(...items);
 
-            for (const subclass of itemSubclasses) {
-                const subclassId = subclass.id;
+                console.log(`Fetched ${items.length} items starting from ID ${startingItemId}`);
 
-                let page = 1;
-                let totalPages = 1;
-
-                do {
-                    const searchEndpointName = 'itemSearch';
-                    const searchEndpointParams = {
-                        ...endpointParams,
-                        'q': '',
-                        'item_class.id': itemClassId,
-                        'item_subclass.id': subclassId,
-                        'pageSize': 100,
-                        'page': page
-                    };
-                    const searchEndpoint = generateEndpoint(searchEndpointName, searchEndpointParams);
-                    const searchResponse = await processEndpoints.fetchEndpoint(searchEndpoint);
-
-                    if (searchResponse[searchEndpointName].results && searchResponse[searchEndpointName].results.length > 0) {
-                        const items = searchResponse[searchEndpointName].results;
-
-                        allItems.push(...items);
-
-                        const pageInfo = searchResponse[searchEndpointName].page;
-                        totalPages = pageInfo.totalPages;
-                        page++;
-                    } else {
-                        break;
-                    }
-
-                } while (page <= totalPages);
-
-                console.log(`Total items for subclass ID ${subclassId}:`, allItems.length);
-                delay(50)
+                const firstItem = items[items.length - 1];
+                startingItemId = firstItem.data.id + 1;
+            } else {
+                console.log(`No more items found after ID ${startingItemId - 1}`);
+                break;
             }
-        } catch (err) {
-            console.error(`Error fetching details for item class ID ${itemClassId}:`, error);
-        }
-       
+
+            await delay(50);
+        } while (true);
+
+        console.log(`Total items fetched: ${allItems.length}`);
+    } catch (error) {
+        console.error(`Error fetching items:`, error);
     }
 
     const itemsToProcess = [];
@@ -76,7 +55,7 @@ async function convertItemClassIndexJson(region = 'us') {
             itemClassId: item.data.item_class.id,
             itemSubClassId: item.data.item_subclass.id,
             media: item.data.media.id,
-            name: item.data.name.en_US,
+            name: item.data.name?.en_US || "Unknown",
             level: item.data.level,
             required_level: item.data.required_level,
             quality_type: item.data.quality.type,
@@ -116,7 +95,7 @@ async function upsertItemData(itemsToProcess){
             console.log(`Upserted row for ${item.name}`);
         }
     } catch (error) {
-        console.error('Error upserting region data:', error.stack);
+        console.error('Error upserting item data:', error.stack);
         throw error;
     } finally {
         client.release();

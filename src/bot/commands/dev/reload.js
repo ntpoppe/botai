@@ -21,10 +21,8 @@ module.exports = {
 			return interaction.reply(`There is no command with name \`${commandName}\`!`);
 		}
 
-		delete require.cache[require.resolve(`../${environmentName}/${command.data.name}.js`)]
-
 		try {
-
+			delete require.cache[require.resolve(`../${environmentName}/${command.data.name}.js`)]
 			let newCommand = require(`../${environmentName}/${command.data.name}.js`);;
 			interaction.client.commands.set(newCommand.data.name, newCommand);
 			await interaction.reply(`Command \`${newCommand.data.name}\` was reloaded!`);

@@ -3,8 +3,6 @@ const BlizzardAPI = require('@api/blizzard-api');
 const ProcessEndpoints = require('@api/process-endpoints');
 const generateEndpoint = require('@api/generate-endpoint');
 
-let realmId = 4387;
-
 async function convertAuctionListingsJson(realmId, auctionHouseId = 6, region = 'us'){
     const blizzardAPI = new BlizzardAPI(process.env.WOW_CLIENT_ID, process.env.WOW_CLIENT_SECRET, region);
     const processEndpoints = new ProcessEndpoints(blizzardAPI);
@@ -15,7 +13,6 @@ async function convertAuctionListingsJson(realmId, auctionHouseId = 6, region = 
     const response = await processEndpoints.fetchEndpoint(endpoint);
     const data = response[endpointName];
     const auctions = data.auctions;
-    console.log(data);
 
     const auctionsToProcess = [];
     auctions.forEach(auction => {
@@ -80,10 +77,9 @@ async function upsertAuctionListingData(auctionListings){
     }
 }
 
-
 (async () => {
     try {
-        const auctionListings = await convertAuctionListingsJson(realmId);
+        const auctionListings = await convertAuctionListingsJson(4384);
         await upsertAuctionListingData(auctionListings);
         process.exit(0);
     } catch (error) {

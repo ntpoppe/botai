@@ -2,6 +2,14 @@ const { pool } = require('@db/pool.js');
 
 module.exports = {
     queries: {
+        items: {
+            getItem: `
+                SELECT *
+                FROM item_data
+                WHERE name ILIKE $1
+                LIMIT 1;
+            `
+        },
         auctionHouse: {
             getAuction: `
                 SELECT *
@@ -9,7 +17,6 @@ module.exports = {
                 WHERE item_id = $1
                 AND auction_house_id = $2
                 AND realm_id = $3
-                AND region = $4;
             `
         },
         realms: {
@@ -18,13 +25,15 @@ module.exports = {
                 FROM realm_data
                 WHERE slug = $1
                 AND region_id = $2
-            `
+                LIMIT 1
+            `,
         },
         regions: {
             getRegion: `
                 SELECT *
                 FROM region_data
                 WHERE tag = $1
+                LIMIT 1
             `
         }
     },
@@ -46,10 +55,9 @@ module.exports = {
         }
     },
 
-    async getData(queryCategory, queryName, params) {
+    async readData(queryCategory, queryName, params) {
         try {
             const data = await this.executeQuery(queryCategory, queryName, params);
-            console.log('Data:', data);
             return data;
         } catch (err) {
             console.error('Error fetching data:', err);
