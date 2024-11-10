@@ -39,6 +39,7 @@ function generateEndpoint(name, endpointParams, locale = 'en_US', dataDir = '../
     const endpointTemplates = {
         'playerProfile': `profile/wow/character/{realm}/{characterName}`,
         'realmData': `data/wow/search/connected-realm`,
+        'classIndex': `data/wow/playable-class/index`,
         'itemClassIndex': `data/wow/item-class/index`,
         'itemClass': `data/wow/item-class/{itemClassId}`,
         'itemMedia': `data/wow/media/item/{itemId}`,

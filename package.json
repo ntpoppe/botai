@@ -24,11 +24,11 @@
     "start": "node -r module-alias/register src/bot/run.js",
     "deploy-commands": "node -r module-alias/register src/bot/deploy-commands.js",
     "update-region-data": "node -r module-alias/register src/db/upserts/upsert-region-data.js",
-    "update-realm-data": "node -r module-alias/register src/db/upserts/upsert-realm-data",
+    "update-realm-data": "node -r module-alias/register src/db/upserts/upsert-realm-data.js",
     "update-item-search-data": "node -r module-alias/register src/db/upserts/upsert-item-search-data.js",
     "update-item-class-index-data": "node -r module-alias/register src/db/upserts/upsert-item-class-data.js",
-    "update-auction-data": "node -r module-alias/register src/db/upserts/upsert-auction-data",
-    "update-auction-house-data": "node -r module-alias/register src/db/upserts/upsert-auction-index",
+    "update-auction-data": "node -r module-alias/register src/db/upserts/upsert-auction-data.js",
+    "update-auction-house-data": "node -r module-alias/register src/db/upserts/upsert-auction-index.js",
     "refresh-data": "node -r module-alias/register src/utils/refresh-dynamic-data.js"
   }
 }

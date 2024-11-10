@@ -2,6 +2,7 @@
 .eslintrc.json
 data/
 config.json
+icons/
 
 # Node.js
 node_modules/
