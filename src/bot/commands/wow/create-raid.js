@@ -6,6 +6,7 @@ const { SlashCommandBuilder,
 		ActionRowBuilder,
 		ButtonBuilder,
 		ButtonStyle,
+		ComponentType,
 		StringSelectMenuBuilder,
 		StringSelectMenuOptionBuilder,
 		GuildScheduledEventEntityType,
@@ -245,7 +246,10 @@ module.exports = {
 			const titleInput = interaction.fields.getTextInputValue('raidTitle');
 			const descriptionInput = interaction.fields.getTextInputValue('raidDescription')
 			const dateInput = interaction.fields.getTextInputValue('raidDate');
-			const timeInput = interaction.fields.getTextInputValue('raidTime');
+			let timeInput = interaction.fields.getTextInputValue('raidTime');
+			
+			// Prepends a 0 if absent
+			timeInput = timeInput.replace(/^(\d):/, '0$1:');
 
 			const datePattern = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])-(\d{4})$/;
 			const timePattern12hr = /^(0?[1-9]|1[0-2]):[0-5]\d (AM|PM)$/i;
@@ -642,11 +646,22 @@ module.exports = {
 		}
 
 		if (disable) {
-            // Change color and disable components if disableAll is true
             updatedEmbed.setColor('#8B0000');
             const updatedComponents = originalMessage.components.map(row => {
                 const actionRow = ActionRowBuilder.from(row);
-                actionRow.components = actionRow.components.map(component => component.setDisabled(true));
+				actionRow.components = actionRow.components.map(component => {
+					// This is awful but nothing else worked
+					if (component.data.type === ComponentType.Button) {
+						// It's a button
+						return ButtonBuilder.from(component).setDisabled(true);
+					} else if (component.data.type === ComponentType.StringSelect) {
+						// It's a select menu
+						return StringSelectMenuBuilder.from(component)
+							.setDisabled(true)
+							.setPlaceholder("The raid has started.");
+					}
+					return component;
+				});
                 return actionRow;
             });
             await originalMessage.edit({ embeds: [updatedEmbed], components: updatedComponents });
