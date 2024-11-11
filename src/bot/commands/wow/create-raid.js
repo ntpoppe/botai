@@ -7,18 +7,21 @@ const { SlashCommandBuilder,
 		ButtonBuilder,
 		ButtonStyle,
 		StringSelectMenuBuilder,
-		StringSelectMenuOptionBuilder } = require('discord.js');
+		StringSelectMenuOptionBuilder,
+		GuildScheduledEventEntityType,
+		GuildScheduledEventPrivacyLevel } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('create-raid')
-		.setDescription('x'),
+		.setDescription('Create a raid roster.'),
 
 	// Initialize data structures
 	roleCounts: {}, // { messageId: { Melee: number, Ranged: number, Tank: number, Healer: number } }
 	playerSelections: {}, // { messageId: { userId: { class, spec, role, status, signupNumber } } }
 	signupCounters: {}, // { messageId: number }
 	leaders: {}, // { messageId: user }
+	events: {}, // { messageId: { eventId: string, name: string, description: string, startTime: Date, endTime: Date, participants: number } }
 
 	classes: {
 		'Warrior': {
@@ -189,7 +192,9 @@ module.exports = {
 	],
 	
 
-	async execute(interaction) {
+	async execute(interaction, client) {
+		this.client = client;
+
 		const modal = new ModalBuilder()
 		.setCustomId('raidModal')
 		.setTitle('Create a raid');
@@ -235,6 +240,8 @@ module.exports = {
 	async handleModalSubmit(interaction) {
 		if (interaction.customId === 'raidModal') {
 			const user = interaction.member?.displayName || interaction.user.username;
+			const userId = interaction.user.id;
+
 			const titleInput = interaction.fields.getTextInputValue('raidTitle');
 			const descriptionInput = interaction.fields.getTextInputValue('raidDescription')
 			const dateInput = interaction.fields.getTextInputValue('raidDate');
@@ -278,7 +285,7 @@ module.exports = {
 
 			const spacer = '\u00A0'.repeat(2);
 			const raidEmbed = new EmbedBuilder()
-				.setColor(0x0099FF)
+				.setColor(0xDAA520)
 				.setTitle(titleInput)
 				.setDescription(descriptionInput)
 				.addFields(
@@ -306,10 +313,15 @@ module.exports = {
 			this.leaders[messageIdFetched] = user;
 			this.playerSelections[messageIdFetched] = {};
 			this.roleCounts[messageIdFetched] = { Melee: 0, Ranged: 0, Tank: 0, Healer: 0 };
-			this.signupCounters[messageIdFetched] = { 'active': 0, 'inactive': 0}
+			this.signupCounters[messageIdFetched] = { 'active': 0, 'inactive': 0 }
 
 			const classSelect = new ActionRowBuilder().addComponents(this.createClassStringSelect(messageIdFetched));
 			const buttons = new ActionRowBuilder().addComponents(this.buttonRow);
+
+			const eventPayload = { userId, titleInput, descriptionInput, parsedDate, discordRelativeTime, messageIdFetched};
+
+			this.createEvent(interaction, eventPayload);
+			this.scheduleDisableEmbed(interaction, messageIdFetched, parsedDate)
 			
             await message.edit({ components: [classSelect, buttons] });
 		}
@@ -353,7 +365,8 @@ module.exports = {
 		await interaction.reply({
             content: `You selected ${selectedClass}. Choose a spec:`,
             components: [specRow],
-            ephemeral: true
+            ephemeral: true,
+			fetchReply: true
         });
 	},
 
@@ -441,7 +454,6 @@ module.exports = {
 
         if (['bench', 'late', 'tentative', 'absence'].includes(status)) {
             // Assign new status
-
 			if (status != 'absence') {
 				this.playerSelections[messageId][userId] = {
 					...previousSelection,
@@ -456,6 +468,7 @@ module.exports = {
 			}
 
             // If the user was previously active (no status), decrement roleCounts and active count
+			// I don't know why I used previous selections... it works though
             if (previousSelection?.role && !previousSelection?.status) {
                 this.roleCounts[messageId][previousSelection.role] = Math.max(0, this.roleCounts[messageId][previousSelection.role] - 1);
 				--this.signupCounters[messageId].active || 1;
@@ -465,6 +478,12 @@ module.exports = {
 					++this.signupCounters[messageId].inactive || 1;
 				}
             }
+
+			// If the user switches status from any to absence, decrement signupCounters
+			if (!this.playerSelections?.role && previousSelection?.status && status === 'absence') {
+				this.signupCounters[messageId].inactive = Math.max(0, this.signupCounters[messageId].inactive - 1);
+			}
+
         } else if (status === 'reset') {
 			previousSelection.status 
 				? this.signupCounters[messageId].inactive = Math.max(0, --this.signupCounters[messageId].inactive)
@@ -478,7 +497,11 @@ module.exports = {
     },
 
 	// Updates the raid embed after a button interaction.
-	async updateRaidEmbed(interaction, messageId) {
+	async updateRaidEmbed(interaction, messageId, disable = false) {
+		if (!interaction.deferred && !interaction.replied) {
+            await interaction.deferUpdate();
+        }
+
 		if (!messageId) {
 			console.error("Message ID is not provided to updateRaidEmbed.");
 			return;
@@ -528,8 +551,6 @@ module.exports = {
                 }
             }
         }
-
-		const useInactive = this.signupCounters[messageId].inactive === 0;
 
 		// Update role counts in the fields without relying on indices
 		updatedEmbed.data.fields = updatedEmbed.data.fields.map(field => {
@@ -591,18 +612,25 @@ module.exports = {
 			const sortedStatusPlayers = playersInStatus
 				.map(id => ({
 					id,
-					signupNumber: this.playerSelections[messageId][id].signupNumber
+					signupNumber: this.playerSelections[messageId][id].signupNumber,
+					selection: this.playerSelections[messageId][id]
 				}))
 				.sort((a, b) => a.signupNumber - b.signupNumber);
 
 			// Create player list string
-			const playerList = sortedStatusPlayers.map(({ id, signupNumber }) => {
+			const playerList = sortedStatusPlayers.map(({ id, signupNumber, selection }) => {
 				const member = interaction.guild.members.cache.get(id);
 				const displayName = member ? member.displayName : id;
 				const signupDisplay = status === 'absence' ? '' : `\`\`${signupNumber}\`\` `;
 
-				return `${signupDisplay} ${displayName}`;
-			}).join('\n');
+				// Get spec emoji if the player has selected a spec and class
+				let specEmoji = '';
+				if (selection.spec && selection.class) {
+					specEmoji = this.specEmojis[`${selection.spec} (${selection.class})`] || '';
+				}
+
+				return `${specEmoji} ${signupDisplay}${displayName}`;
+			}).join(', ');
 
 			const playerCount = playersInStatus.length;
 
@@ -610,29 +638,125 @@ module.exports = {
 			const statusCapitalized = status.charAt(0).toUpperCase() + status.slice(1);
 			const fieldName = `**\u200D${statusCapitalized} (${playerCount}):**`;
 
-			updatedEmbed.addFields({ name: fieldName, value: playerList, inline: true });
+			updatedEmbed.addFields({ name: '\u200D', value: `${fieldName} ${playerList}`, inline: false });
 		}
 
-		// Update the original message with the new embed
-		await originalMessage.edit({ embeds: [updatedEmbed] });
+		if (disable) {
+            // Change color and disable components if disableAll is true
+            updatedEmbed.setColor('#8B0000');
+            const updatedComponents = originalMessage.components.map(row => {
+                const actionRow = ActionRowBuilder.from(row);
+                actionRow.components = actionRow.components.map(component => component.setDisabled(true));
+                return actionRow;
+            });
+            await originalMessage.edit({ embeds: [updatedEmbed], components: updatedComponents });
+        } else {
+            await originalMessage.edit({ embeds: [updatedEmbed] });
+        }
 
-		// Determine and set the appropriate acknowledgment message
-		const userSelection = this.playerSelections[messageId][interaction.user.id];
-		let showMessage = true;
-		let statusMessage = '';
+		if (!disable) {
+			const userSelection = this.playerSelections[messageId][interaction.user.id];
+			let showMessage = true;
+			let statusMessage = '';
 
-	  if (userSelection && userSelection.status && userSelection.status !== 'reset') {
-			showMessage = false;
-		} else if (userSelection && userSelection.class && userSelection.spec) {
-			statusMessage = `You selected **${userSelection.spec}** for the raid.`;
-		} else {
-			showMessage = false;
+			if (userSelection && userSelection.status && userSelection.status !== 'reset') {
+				showMessage = false;
+			} else if (userSelection && userSelection.class && userSelection.spec) {
+				statusMessage = `You selected **${userSelection.spec}** for the raid.`;
+			} else {
+				showMessage = false;
+			}
+
+			// Update the event if it exists
+			this.updateEventCount(interaction, messageId);
+
+			if (showMessage) {
+				await interaction.editReply({ content: statusMessage, components: [], ephemeral: true });
+			}
 		}
+	},
 
-		await interaction.deferUpdate();
+	async createEvent(interaction, payload) {
+		const guild = interaction.guild;
+		
+		const startTime = new Date(payload.parsedDate);
+		const endTime = new Date(startTime.getTime() + 60 * 60 * 1000 * 4);
 
-		if (showMessage) {
-			await interaction.followUp({ content: statusMessage, ephemeral: true });
+		const description = `${this.miscEmojis.Leader} <@${interaction.user.id}>\u0009\u0009${this.miscEmojis.Signups} 0\u0009\u0009${this.miscEmojis.Hourglass} ${payload.discordRelativeTime}\n\n**Description:**\n${payload.descriptionInput}`;
+		
+		try {
+			const scheduledEvent = await guild.scheduledEvents.create({
+				name: payload.titleInput,
+				description: description,
+				scheduledStartTime: startTime,
+				scheduledEndTime: endTime,
+				entityType: GuildScheduledEventEntityType.External,
+				privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
+				entityMetadata: {
+					location: 'World of Warcraft'
+				},
+			})
+			
+			const eventId = scheduledEvent.id;
+			const messageId = payload.messageIdFetched;
+	
+			this.events[messageId] = {
+				eventId: eventId,
+				name: payload.titleInput,
+				description: payload.descriptionInput,
+				startTime: startTime,
+				endTime: endTime,
+				relativeTime: payload.discordRelativeTime,
+				participants: 0
+			};
+
+			return scheduledEvent;
+        } catch (error) {
+            console.error('Error creating event:', error);
+        }
+	},
+
+	async updateEventCount(interaction, messageId) {
+		try {
+			if (!this.events[messageId]) {
+				console.error(`Event with messageId ${messageId} does not exist.`);
+				return
+			}
+
+			const guild = interaction.guild;
+			const storedEvent = this.events[messageId]
+			storedEvent.participants = this.signupCounters[messageId].active || 0 + this.signupCounters[messageId].inactive || 0
+
+			const event = await guild.scheduledEvents.fetch(storedEvent.eventId)
+			const newDescription = `${this.miscEmojis.Leader} <@${interaction.user.id}>\u0009\u0009${this.miscEmojis.Signups} ${storedEvent.participants}\u0009\u0009${this.miscEmojis.Hourglass} ${storedEvent.relativeTime}\n\n**Description:**\n${storedEvent.description}`;
+
+			await event.edit({
+				description: newDescription,
+			});
+		} catch (err) {
+			console.error(`Error in updateEventCount: ${err}`);
+		}
+	},
+
+	async scheduleDisableEmbed(interaction, messageId, eventStartTime) {
+		const delay = eventStartTime.getTime() - Date.now();
+	
+		if (delay <= 0) {
+			console.log("The event start time is in the past or immediate, disabling buttons now.");
+			this.disableEmbedNow(interaction, messageId);
+			return;
+		}
+		
+		// Set a timeout to disable buttons at the event start time
+		setTimeout(() => this.disableEmbedNow(interaction, messageId), delay);
+	},
+	
+	async disableEmbedNow(interaction, messageId) {
+		try {
+			await this.updateRaidEmbed(interaction, messageId, true);
+			console.log("Disabled embed");
+		} catch (error) {
+			console.error("Error disabling buttons:", error);
 		}
 	},
 
