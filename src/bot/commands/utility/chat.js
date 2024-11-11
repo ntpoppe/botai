@@ -5,17 +5,41 @@ const OpenAI = require("openai")
 
 const activeUsers = new Set();
 const userConversations = new Map();
+const userCollectors = new Map();
 const openai = new OpenAI();
 
 module.exports = {
 	cooldown: 5,
 	data: new SlashCommandBuilder()
 		.setName('chat')
-		.setDescription('Chat with Botai about WoW stuff.'),
+		.setDescription('Chat with Botai about WoW stuff.')
+		.addSubcommand(subcommand =>
+			subcommand
+				.setName('start')
+				.setDescription('Starts a conversation with Botai.')
+		)
+		.addSubcommand(subcommand =>
+			subcommand
+				.setName('stop')
+				.setDescription('Stops Botai from talking to you.')
+		),
 
 	async execute(interaction) {
 		const userId = interaction.user.id
 		const user = interaction.member?.displayName || interaction.user.username;
+
+		const subcommand = interaction.options.getSubcommand(false);
+
+        if (subcommand === 'stop') {
+            const collector = userCollectors.get(userId);
+            if (collector) {
+                collector.stop('user');
+				await interaction.reply({ content: "You've stopped the conversation. You can type without Botai replies.", ephemeral: true })
+            } else {
+                await interaction.reply({ content: "You don't have an active conversation to stop.", ephemeral: true });
+            }
+            return;
+        }
 	
 		if (activeUsers.has(userId)) {
             await interaction.reply({ 
@@ -47,6 +71,8 @@ module.exports = {
             filter,
             idle: 60000 * 2, 
         });
+
+		userCollectors.set(userId, collector);
 	
 		collector.on('collect', async (message) => {
 			console.log('Message collected:', message.content);
@@ -117,6 +143,7 @@ module.exports = {
 
 			activeUsers.delete(userId);
             userConversations.delete(userId);
+			userCollectors.delete(userId);
 		});
 	},
 

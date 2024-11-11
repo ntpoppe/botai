@@ -15,7 +15,7 @@ module.exports = {
 
 		if (amount <= 1) {
 			return await interaction.reply({
-				content: 'The starting amount must be greater than 1, brokie',
+				content: 'The starting amount must be greater than 1, brokie.',
 				ephemeral: true,
 			});
 		}
@@ -30,7 +30,7 @@ module.exports = {
 		const playerName = interaction.member?.displayName || interaction.user.username;
 		const botName = interaction.client.user.username;
 
-		await interaction.channel.send(`Let's begin, **${playerName}**...`);
+		await interaction.reply(`Let's begin, **${playerName}**...`);
 
 
 		let currentRoll = amount * 10;
@@ -43,11 +43,11 @@ module.exports = {
 				await interaction.channel.send(`**${currentPlayer}** rolled **${roll}** (1-${currentRoll})`);
 				currentRoll = roll;
 
-				currentPlayer = currentPlayer === playerName ? botName : playerName;
 
 				if (currentRoll === 1) {
-				await interaction.channel.send(`**${currentPlayer}** rolled a **1**. You lose.`);
+					await interaction.channel.send(`**${currentPlayer}** rolled a **1**, they lose.`);
 				} else {
+					currentPlayer = currentPlayer === playerName ? botName : playerName;
 					setTimeout(rollAndSendMessage, 1000);
 				}
 			}
