@@ -191,14 +191,13 @@ module.exports = {
 			.setLabel('Reset')
 			.setStyle(ButtonStyle.Secondary)
 	],
-	
 
 	async execute(interaction, client) {
 		this.client = client;
 
 		const modal = new ModalBuilder()
-		.setCustomId('raidModal')
-		.setTitle('Create a raid');
+			.setCustomId('raidModal')
+			.setTitle('Create a raid');
 
 		const titleInput = new TextInputBuilder()
 			.setCustomId('raidTitle')
