@@ -8,7 +8,18 @@ module.exports = {
                 FROM item_data
                 WHERE name ILIKE $1
                 LIMIT 1;
-            `
+            `,
+            getAllItemNames: `
+                SELECT name
+                FROM item_data
+            `,
+            getAutoCompleteItems: `
+                SELECT name
+                FROM item_data
+                WHERE name ILIKE $1
+                ORDER BY name ASC
+                LIMIT 25;
+            `,
         },
         auctionHouse: {
             getAuction: `
@@ -17,7 +28,7 @@ module.exports = {
                 WHERE item_id = $1
                 AND auction_house_id = $2
                 AND realm_id = $3
-            `
+            `,
         },
         realms: {
             getRealm: `

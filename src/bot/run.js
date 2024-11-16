@@ -3,6 +3,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Events, Collection, GatewayIntentBits, ActivityType } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const dbRead = require('@db/read-data')
+
+// In memory item name list for auctions autocomplete
+let itemNames = [];
 
 // Initialize commands
 client.commands = new Collection();
@@ -150,6 +154,28 @@ client.on(Events.InteractionCreate, async interaction => {
             return;
         }
     }
+
+    if (interaction.isAutocomplete()) {
+        const commandName = interaction.commandName;
+
+        if (commandName === 'auctions') {
+            const focusedOption = interaction.options.getFocused(true);
+            const focusedValue = focusedOption.value;
+
+            try {
+                const matchingItems = itemNames
+                    .filter(name => name.toLowerCase().includes(focusedValue.toLowerCase()))
+                    .slice(0, 25);
+
+                await interaction.respond(
+                    matchingItems.map(name => ({ name, value: name }))
+                );
+            } catch (err) {
+                console.log(`Error fetching autocomplete options: ${err.message}`);
+                await interaction.respond([]);
+            }
+        }
+    }
 });
 
 const statuses = [
@@ -176,11 +202,17 @@ function setRandomStatus() {
     client.user.setPresence(randomStatus);
 }
 
+async function populateItemNames () {
+    data = await dbRead.readData('items', 'getAllItemNames');
+    itemNames = data.map(row => row.name);
+}
+
 // Bring the bot online
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Success. Logged in as ${readyClient.user.tag}`);
 
     setRandomStatus();
+    populateItemNames();
 
     setInterval(setRandomStatus, 900000); 
 });

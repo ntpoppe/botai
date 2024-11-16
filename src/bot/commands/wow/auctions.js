@@ -13,6 +13,7 @@ module.exports = {
 			option.setName('name')
 				.setDescription('Name of the item')
 				.setRequired(true)
+				.setAutocomplete(true)
 		)
         .addIntegerOption(option =>
             option.setName('house')
@@ -56,7 +57,7 @@ module.exports = {
 		const embed = new EmbedBuilder()
 		.setColor(0xB0B0B0)
 		.setTitle(`Auctions for: ${payload.itemName}`)
-		.setDescription(`AH: ${payload.realm} ${payload.house}\n\nTotal auctions: ${payload.totalAuctions}`)
+		.setDescription(`AH: ${payload.realm} ${payload.house}\n\nTotal auctions: ${payload.totalAuctions}\n\n`)
 		.setThumbnail(`https://wow.zamimg.com/images/wow/icons/large/${extractedIconName}`)
 		.addFields(
 			{ name: `${spacer}`, value: '------------------------------------------', inline: false },
@@ -65,8 +66,8 @@ module.exports = {
 			{ name: 'Buyout', value: parsedAuctions.map(a => `${a.buyout || 'N/A'}`).join('\n'), inline: true },
 			{ name: 'Qty', value: parsedAuctions.map(a => a.quantity || 'N/A').join('\n'), inline: true },
 			{ name: `${spacer}`, value: `${spacer}`, inline: false },
-			{ name: `${spacer}`, value: `**Average bid:** ${this.calculateAverageBid(payload.auctions)}`, inline: false },
-			{ name: `${spacer}`, value: `**Average buyout:** ${this.calculateAverageBuyout(payload.auctions)}`, inline: false },
+			{ name: `${spacer}`, value: `**Average bid per unit:** ${this.calculateAverageBid(payload.auctions)}`, inline: false },
+			{ name: `${spacer}`, value: `**Average buyout per unit:** ${this.calculateAverageBuyout(payload.auctions)}`, inline: false },
 		)
 		.setTimestamp();
 
@@ -95,6 +96,15 @@ module.exports = {
 			console.error(`Error fetching media for item ID ${itemId}:`, error);
 			return null;
 		}
+	},
+
+	createLinkButton(payload) {
+		const button = new ButtonBuilder()
+			.setLabel('AtlasGG')
+			.setStyle(ButtonStyle.Link)
+			.setURL(`https://atlasforge.gg/wow-cataclysm/auctions/${payload.region}/${payload.realm}/${payload.itemId}`);
+		
+		return button;
 	},
 
 	extractIconName(url) {
@@ -129,19 +139,35 @@ module.exports = {
 	calculateAverageBid(auctions) {
 		if (auctions.length === 0) return '0g 0s 0c';
 	
-		const bids = auctions.map(auction => parseInt(auction.bid, 10)).sort((a, b) => a - b);
-		
-		const q1 = this.calculatePercentile(bids, 0.25);
-		const q3 = this.calculatePercentile(bids, 0.75);
+		// Calculate unit prices (bid per item)
+		const unitPrices = auctions
+			.map(auction => ({
+				unitPrice: parseInt(auction.bid, 10) / parseInt(auction.quantity, 10),
+				quantity: parseInt(auction.quantity, 10),
+			}))
+			.filter(auction => !isNaN(auction.unitPrice) && auction.quantity > 0) // Ensure valid data
+			.sort((a, b) => a.unitPrice - b.unitPrice); // Sort by unit price
+	
+		// Extract only the unit prices for statistical filtering
+		const prices = unitPrices.map(a => a.unitPrice);
+	
+		// Apply IQR filtering to unit prices
+		const q1 = this.calculatePercentile(prices, 0.25);
+		const q3 = this.calculatePercentile(prices, 0.75);
 		const iqr = q3 - q1;
 	
 		const lowerBound = q1 - 1.5 * iqr;
 		const upperBound = q3 + 1.5 * iqr;
 	
-		const filteredBids = bids.filter(bid => bid >= lowerBound && bid <= upperBound);
+		const filteredPrices = unitPrices.filter(
+			a => a.unitPrice >= lowerBound && a.unitPrice <= upperBound
+		);
 	
-		const totalCopper = filteredBids.reduce((sum, bid) => sum + bid, 0);
-		const averageCopper = Math.floor(totalCopper / filteredBids.length);
+		// Calculate weighted average of the filtered unit prices
+		const totalQuantity = filteredPrices.reduce((sum, a) => sum + a.quantity, 0);
+		const totalCopper = filteredPrices.reduce((sum, a) => sum + a.unitPrice * a.quantity, 0);
+	
+		const averageCopper = Math.floor(totalCopper / totalQuantity);
 	
 		return this.convertCopperToGoldSilverCopper(averageCopper);
 	},
@@ -149,19 +175,35 @@ module.exports = {
 	calculateAverageBuyout(auctions) {
 		if (auctions.length === 0) return '0g 0s 0c';
 	
-		const buyouts = auctions.map(auction => parseInt(auction.buyout, 10)).sort((a, b) => a - b);
-		
-		const q1 = this.calculatePercentile(buyouts, 0.25);
-		const q3 = this.calculatePercentile(buyouts, 0.75);
+		// Calculate unit prices (buyout per item)
+		const unitPrices = auctions
+			.map(auction => ({
+				unitPrice: parseInt(auction.buyout, 10) / parseInt(auction.quantity, 10),
+				quantity: parseInt(auction.quantity, 10),
+			}))
+			.filter(auction => !isNaN(auction.unitPrice) && auction.quantity > 0) // Ensure valid data
+			.sort((a, b) => a.unitPrice - b.unitPrice); // Sort by unit price
+	
+		// Extract only the unit prices for statistical filtering
+		const prices = unitPrices.map(a => a.unitPrice);
+	
+		// Apply IQR filtering to unit prices
+		const q1 = this.calculatePercentile(prices, 0.25);
+		const q3 = this.calculatePercentile(prices, 0.75);
 		const iqr = q3 - q1;
 	
 		const lowerBound = q1 - 1.5 * iqr;
 		const upperBound = q3 + 1.5 * iqr;
 	
-		const filteredBuyouts = buyouts.filter(buyout => buyout >= lowerBound && buyout <= upperBound);
+		const filteredPrices = unitPrices.filter(
+			a => a.unitPrice >= lowerBound && a.unitPrice <= upperBound
+		);
 	
-		const totalCopper = filteredBuyouts.reduce((sum, buyout) => sum + buyout, 0);
-		const averageCopper = Math.floor(totalCopper / filteredBuyouts.length);
+		// Calculate weighted average of the filtered unit prices
+		const totalQuantity = filteredPrices.reduce((sum, a) => sum + a.quantity, 0);
+		const totalCopper = filteredPrices.reduce((sum, a) => sum + a.unitPrice * a.quantity, 0);
+	
+		const averageCopper = Math.floor(totalCopper / totalQuantity);
 	
 		return this.convertCopperToGoldSilverCopper(averageCopper);
 	},
@@ -230,9 +272,14 @@ module.exports = {
 			}
 
 			const auctionsEmbed = await this.createEmbed(payload)
+
+			const buttonPayload = { realm: dbRealm[0].slug, region: region, itemId: dbItem[0].id}
+			const atlasButton = new ActionRowBuilder().addComponents(this.createLinkButton(buttonPayload));
+
 	
 			await interaction.editReply({
-				embeds: [auctionsEmbed] ,
+				embeds: [auctionsEmbed],
+				components: [atlasButton],
 			});
 		}
 		catch (err) {
