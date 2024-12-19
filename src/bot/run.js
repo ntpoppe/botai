@@ -188,10 +188,6 @@ const statuses = [
         status: 'online'
     },
     {
-        activities: [{ name: 'Skullmasterj swim across lava', type: ActivityType.Watching }],
-        status: 'online'
-    },
-    {
         activities: [{ name: 'LFG argue', type: ActivityType.Watching }],
         status: 'online'
     }
