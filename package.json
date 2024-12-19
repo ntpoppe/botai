@@ -18,7 +18,7 @@
   "_moduleAliases": {
     "@src": "src",
     "@api": "src/api",
-    "@db": "Src/db",
+    "@db": "src/db",
     "@bot": "src/bot",
     "@utils": "src/bot/utils",
     "@commands": "src/bot/commands"
