@@ -1,10 +1,10 @@
 # Botai - World of Warcraft Discord Bot
 
-A comprehensive Discord bot designed to enhance the World of Warcraft gaming experience by providing auction house data, raid management tools, and AI-powered chat assistance.
+A Discord bot designed to enhance our World of Warcraft experience.
 
 ## Purpose
 
-BotAI serves as a multi-functional Discord bot that integrates with World of Warcraft APIs to provide real-time auction house data,  raid roster management, and LLM-powered conversation capabilities. The bot is specifically designed for my WoW guild.
+Botai serves as a multi-functional Discord bot that integrates with World of Warcraft APIs to provide real-time auction house data, raid roster management, and LLM-powered conversation capabilities. The bot is specifically designed for my WoW guild.
 
 ## Architecture Overview
 
@@ -63,7 +63,6 @@ Offers cross-cutting helpers such as structured logging setup and common data-ex
 - Realm and region data storage
 
 ## Prerequisites
-
 - Node.js (v16 or higher)
 - PostgreSQL database
 - Discord Bot Token
