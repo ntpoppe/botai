@@ -13,4 +13,4 @@ RUN npm ci
 # Copy source
 COPY . .
 
-CMD ["node", "src/bot/run.js"]
+CMD ["npm", "start"]
