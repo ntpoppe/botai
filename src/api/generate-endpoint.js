@@ -67,14 +67,10 @@ function generateEndpoint(name, endpointParams, locale = 'en_US', dataDir = '../
     const filename = `${name}.json`; // e.g., 'playerProfile.json'
     const savePath = path.join(__dirname, dataDir, filename);
 
-    const params = {
-        namespace,
-        locale,
-        orderby,
-        id,
-        _pageSize,
-        _page
-    };
+    const rawParams = { namespace, locale, orderby, id, _pageSize, _page };
+    const params = Object.fromEntries(
+      Object.entries(rawParams).filter(([_, v]) => v !== undefined)
+    );
 
     return {
         name,
