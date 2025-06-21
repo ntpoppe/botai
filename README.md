@@ -92,4 +92,4 @@ OPENAI_API_KEY=your_openai_api_key
 
 ## Known Issues
 
-- **Upsert Scripts**: The database upsert scripts in `src/db/upserts/` are currently non-functional due to Blizzard API endpoint changes. These scripts were designed to sync auction house data, item information, and realm data but require updates to work with current API endpoints.
+- **Upsert Scripts**: The database upsert scripts in `src/db/upserts/` are currently non-functional due to Blizzard API endpoint changes. These scripts were designed to sync auction house data, item information, and realm data but require updates to work with current API endpoints. I also just don't feel like fixing it.
