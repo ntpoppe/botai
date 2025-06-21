@@ -26,7 +26,7 @@ Contains grouped modules defining slash-command schemas and logic. Each subfolde
 Abstracts external integrations—managing OAuth tokens, building and sending requests to Blizzard or local AI models, and applying retry/pagination logic. Provides a clean interface for higher-level code to fetch and transform data.
 
 #### Database Layer (`src/db/`)
-Manages persistence—configuring the Postgres connection pool, offering generic read routines, and running upsert workflows that synchronize API-fetched data into normalized tables (realms, items, auctions, regions).
+Manages persistence—configuring the Postgres connection pool, offering generic read routines, and running upsert workflows that synchronize API-fetched data into normalized tables (realms, items, auctions, regions). Instead of constantly reading data from Blizzard's API, I store the data I receive in tables and query from there.
 
 #### Utilities (`src/bot/utils/`)
 Offers cross-cutting helpers such as structured logging setup and common data-extraction or transformation functions shared across the bot.  
@@ -89,6 +89,8 @@ WOW_CLIENT_SECRET=your_blizzard_client_secret
 # OpenAI
 OPENAI_API_KEY=your_openai_api_key
 ```
+
+## TODO: Describe the schema for the database.
 
 ## Known Issues
 
