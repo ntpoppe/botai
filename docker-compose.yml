@@ -1,29 +1,27 @@
 services:
   db:
-    image: postgres:15
+    image: postgres:17
     restart: always
     environment:
       POSTGRES_DB: botai
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ""
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
     volumes:
       - db-data:/var/lib/postgresql/data
 
   bot:
     build:
       context: .
-      network: host
-    network_mode: host
     dns:
       - 1.1.1.1
       - 8.8.8.8
     depends_on:
       - db
     environment:
-      DB_HOST: localhost
+      DB_HOST: db
       DB_PORT: 5432
       DB_USER: postgres
-      DB_PASSWORD: ""
+      DB_PASSWORD: "${DB_PASSWORD}"
       DB_DATABASE: botai
 
       WOW_CLIENT_ID:     ${WOW_CLIENT_ID}
