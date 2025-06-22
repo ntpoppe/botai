@@ -1,10 +1,10 @@
 # Botai - World of Warcraft Discord Bot
 
-A comprehensive Discord bot designed to enhance the World of Warcraft gaming experience by providing auction house data, raid management tools, and AI-powered chat assistance.
+A Discord bot designed to enhance our World of Warcraft experience.
 
 ## Purpose
 
-BotAI serves as a multi-functional Discord bot that integrates with World of Warcraft APIs to provide real-time auction house data,  raid roster management, and LLM-powered conversation capabilities. The bot is specifically designed for my WoW guild.
+Botai serves as a multi-functional Discord bot that integrates with World of Warcraft APIs to provide real-time auction house data, raid roster management, and LLM-powered conversation capabilities. The bot is specifically designed for my WoW guild.
 
 ## Architecture Overview
 
@@ -26,7 +26,7 @@ Contains grouped modules defining slash-command schemas and logic. Each subfolde
 Abstracts external integrations—managing OAuth tokens, building and sending requests to Blizzard or local AI models, and applying retry/pagination logic. Provides a clean interface for higher-level code to fetch and transform data.
 
 #### Database Layer (`src/db/`)
-Manages persistence—configuring the Postgres connection pool, offering generic read routines, and running upsert workflows that synchronize API-fetched data into normalized tables (realms, items, auctions, regions).
+Manages persistence—configuring the Postgres connection pool, offering generic read routines, and running upsert workflows that synchronize API-fetched data into normalized tables (realms, items, auctions, regions). Instead of constantly reading data from Blizzard's API, I store the data I receive in tables and query from there.
 
 #### Utilities (`src/bot/utils/`)
 Offers cross-cutting helpers such as structured logging setup and common data-extraction or transformation functions shared across the bot.  
@@ -63,7 +63,6 @@ Offers cross-cutting helpers such as structured logging setup and common data-ex
 - Realm and region data storage
 
 ## Prerequisites
-
 - Node.js (v16 or higher)
 - PostgreSQL database
 - Discord Bot Token
@@ -91,6 +90,8 @@ WOW_CLIENT_SECRET=your_blizzard_client_secret
 OPENAI_API_KEY=your_openai_api_key
 ```
 
+## TODO: Describe the schema for the database.
+
 ## Known Issues
 
-- **Upsert Scripts**: The database upsert scripts in `src/db/upserts/` are currently non-functional due to Blizzard API endpoint changes. These scripts were designed to sync auction house data, item information, and realm data but require updates to work with current API endpoints.
+- **Upsert Scripts**: The database upsert scripts in `src/db/upserts/` are currently non-functional due to Blizzard API endpoint changes. These scripts were designed to sync auction house data, item information, and realm data but require updates to work with current API endpoints. I also just don't feel like fixing it.
